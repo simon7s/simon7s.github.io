@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="博客搭建,Tags创建,日常踩坑," />
+  <meta name="keywords" content="博客搭建,Tags创建," />
 
 
 
@@ -79,23 +79,24 @@
 
 
 
-<meta name="description" content="浏览器被劫持解决方法​       相信很多人都有遇到浏览器被劫持的情况。之前我把家里的电脑重装了系统，无论是我电脑上的chome还是firefox，还是360，UC等浏览器，都被2345所劫持了，一带开浏览器就是2345的主页，想甩都甩不掉。  虽然不影响我正常上网，但是作为一个将要从事网络安全的人来讲，我有点不爽，一定要把这种流氓行文纠正。 ​        然后网上查相关资料，果然很多人也遇">
+<meta name="description" content="内网 一、内网渗透简介什么是内网： ​         内网也可以称为局域网。局域网自身的组成大体由（计算机设备、内网连接设备、网络传输介质）3大部分构成，其中，计算机设备又包括服务器与工作站，网络连接设备则包含了网卡，集线器，交换机，网络传输介质简单来说就是网线，由同轴电缆、双绞线集及光缆3大原件构成。    计算机设备 服务器、工作站    内网连接设备 网卡、集线器、交换机   网络传输介质">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浏览器被劫持解决方法">
-<meta property="og:url" content="http://yoursite.com/2020/02/06/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A2%AB%E5%8A%AB%E6%8C%81%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/index.html">
+<meta property="og:title" content="内网简介">
+<meta property="og:url" content="http://yoursite.com/2020/02/06/%E5%86%85%E7%BD%91%E5%AE%8F%E8%A7%82/index.html">
 <meta property="og:site_name" content="South&#39;D 的博客">
-<meta property="og:description" content="浏览器被劫持解决方法​       相信很多人都有遇到浏览器被劫持的情况。之前我把家里的电脑重装了系统，无论是我电脑上的chome还是firefox，还是360，UC等浏览器，都被2345所劫持了，一带开浏览器就是2345的主页，想甩都甩不掉。  虽然不影响我正常上网，但是作为一个将要从事网络安全的人来讲，我有点不爽，一定要把这种流氓行文纠正。 ​        然后网上查相关资料，果然很多人也遇">
-<meta property="og:image" content="http://yoursite.com/2020/02/06/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A2%AB%E5%8A%AB%E6%8C%81%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1580925938481.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/06/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A2%AB%E5%8A%AB%E6%8C%81%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1580926289186.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/06/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A2%AB%E5%8A%AB%E6%8C%81%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1580926479431.png">
-<meta property="article:published_time" content="2020-02-05T18:24:17.860Z">
-<meta property="article:modified_time" content="2020-02-05T18:24:05.407Z">
+<meta property="og:description" content="内网 一、内网渗透简介什么是内网： ​         内网也可以称为局域网。局域网自身的组成大体由（计算机设备、内网连接设备、网络传输介质）3大部分构成，其中，计算机设备又包括服务器与工作站，网络连接设备则包含了网卡，集线器，交换机，网络传输介质简单来说就是网线，由同轴电缆、双绞线集及光缆3大原件构成。    计算机设备 服务器、工作站    内网连接设备 网卡、集线器、交换机   网络传输介质">
+<meta property="og:image" content="http://yoursite.com/2020/02/06/%E5%86%85%E7%BD%91%E5%AE%8F%E8%A7%82/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578291367804.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/06/%E5%86%85%E7%BD%91%E5%AE%8F%E8%A7%82/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578291642042.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/06/%E5%86%85%E7%BD%91%E5%AE%8F%E8%A7%82/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578291792949.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/06/%E5%86%85%E7%BD%91%E5%AE%8F%E8%A7%82/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578297353716.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/06/%E5%86%85%E7%BD%91%E5%AE%8F%E8%A7%82/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578316787479.png">
+<meta property="article:published_time" content="2020-02-06T15:15:04.050Z">
+<meta property="article:modified_time" content="2020-02-06T15:16:48.027Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="博客搭建">
 <meta property="article:tag" content="Tags创建">
-<meta property="article:tag" content="日常踩坑">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/02/06/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A2%AB%E5%8A%AB%E6%8C%81%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1580925938481.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/02/06/%E5%86%85%E7%BD%91%E5%AE%8F%E8%A7%82/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578291367804.png">
 
 
 
@@ -125,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/02/06/浏览器被劫持解决办法/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/02/06/内网宏观/"/>
 
 
 
 
 
-  <title>浏览器被劫持解决方法 | South'D 的博客</title>
+  <title>内网简介 | South'D 的博客</title>
   
 
 
@@ -268,7 +269,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A2%AB%E5%8A%AB%E6%8C%81%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/%E5%86%85%E7%BD%91%E5%AE%8F%E8%A7%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -285,7 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">浏览器被劫持解决方法</h1>
+          <h1 class="post-title" itemprop="name headline">内网简介</h1>
         
 
         <div class="post-meta">
@@ -297,7 +298,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-06T02:24:17+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-06T23:15:04+08:00">
                 2020-02-06
               </time>
             
@@ -320,8 +321,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B8%A9%E5%9D%91/" itemprop="url" rel="index">
-                    <span itemprop="name">踩坑</span>
+                  <a href="/categories/%E5%86%85%E7%BD%91/" itemprop="url" rel="index">
+                    <span itemprop="name">内网</span>
                   </a>
                 </span>
 
@@ -357,17 +358,77 @@
       
 
       
-        <h1 id="浏览器被劫持解决方法"><a href="#浏览器被劫持解决方法" class="headerlink" title="浏览器被劫持解决方法"></a>浏览器被劫持解决方法</h1><p>​       相信很多人都有遇到浏览器被劫持的情况。之前我把家里的电脑重装了系统，无论是我电脑上的chome还是firefox，还是360，UC等浏览器，都被2345所劫持了，一带开浏览器就是2345的主页，想甩都甩不掉。</p>
-<p><img src="/2020/02/06/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A2%AB%E5%8A%AB%E6%8C%81%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1580925938481.png" alt="1580925938481"></p>
-<p>虽然不影响我正常上网，但是作为一个将要从事网络安全的人来讲，我有点不爽，一定要把这种流氓行文纠正。</p>
-<p>​        然后网上查相关资料，果然很多人也遇到了同样的问题，有的是修改浏览器的设置，各种骚操作都有，但是尝试过之后都不行。在很崩溃的情况下看到了一种很简单的方法，修改浏览器更目录上的exe文件名字。</p>
-<p><img src="/2020/02/06/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A2%AB%E5%8A%AB%E6%8C%81%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1580926289186.png" alt="1580926289186"></p>
-<p>步骤一：找到浏览器的安装文件夹，这里应该不用我多说了吧</p>
-<p>步骤二：修改执行程序的名称（关键步骤）</p>
-<p><img src="/2020/02/06/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A2%AB%E5%8A%AB%E6%8C%81%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1580926479431.png" alt="1580926479431"></p>
-<p>我这里为随便输入了几个之母，比如xxx-chome.exe,修改后，发现原来被2345网站劫持的主页不见了。</p>
-<p>步骤三：修改快捷方式</p>
-<p>直接拉到桌面就可用</p>
+        <p>内网</p>
+<h2 id="一、内网渗透简介"><a href="#一、内网渗透简介" class="headerlink" title="一、内网渗透简介"></a>一、内网渗透简介</h2><p>什么是内网：</p>
+<p>​         内网也可以称为局域网。局域网自身的组成大体由<strong>（计算机设备、内网连接设备、网络传输介质）</strong>3大部分构成，其中，计算机设备又包括服务器与工作站，网络连接设备则包含了网卡，集线器，交换机，网络传输介质简单来说就是网线，由同轴电缆、双绞线集及光缆3大原件构成。</p>
+<table>
+<thead>
+<tr>
+<th><strong>计算机设备</strong></th>
+<th>服务器、工作站</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>内网连接设备</strong></td>
+<td>网卡、集线器、交换机</td>
+</tr>
+<tr>
+<td><strong>网络传输介质</strong></td>
+<td>网线（同轴电缆、双绞线集、光缆）</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>按照传递介质可以分为</th>
+<th>有限局域网和无线局域网</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>按照组网方式可以分为</td>
+<td>工作组局域网和控制域局域网</td>
+</tr>
+</tbody></table>
+<p><img src="/2020/02/06/%E5%86%85%E7%BD%91%E5%AE%8F%E8%A7%82/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578291367804.png" alt="1578291367804"></p>
+<h2 id="二、工作组和域"><a href="#二、工作组和域" class="headerlink" title="二、工作组和域"></a>二、工作组和域</h2><h3 id="工作组"><a href="#工作组" class="headerlink" title="工作组"></a>工作组</h3><p>​        工作组是局域网中的一个概念，它是最常见的局域网管理模式，简单是因为默认情况下计算机都是采用工作组方式进行管理的。将不同的电脑按功能分别列入不同的组中，以方便管理。默认情况下所有计算机都处在名为WORKGOUP的工作组中，工作组资源管理模式适合于网络中计算机不多，多管理要求不严格的情况。大部分中小公司都采取工作组的方式对资源进行权限分配和目录共享。相同组中的不同用户通过对方主机的用户名和密码可以查看对方共享的文件夹，默认共享的是Users目录。</p>
+<table>
+<thead>
+<tr>
+<th>工作组的优点</th>
+<th><strong>省事</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>工作住的缺点</strong></td>
+<td><strong>缺乏集中管理与控制的机制，没有集中的统一账户管理，没有对资源实施更加高效的集中管理，没有实施工作站的有效配置和安全性严密控制。只适合效规模用户的使用。</strong></td>
+</tr>
+</tbody></table>
+<p>​        基于以上优缺点，当计算机数量比较多，大型企业中网络规模大，需要统一的管理和集中的身份验证，并且能够给用户提供方便的搜索和使用网络资源的方式，工作组的组织形式就不合适了，于是域就出现了。</p>
+<h3 id="域"><a href="#域" class="headerlink" title="域"></a>域</h3><p>​        什么是域：另一种网络架构，和“工作组”相对应。由工作组升级而来的高级架构。在一个域里面有一台或多台域控DC（Domain Control），用来在域架构中用来管理所有客户端的服务器，是与结构的核心，每个域控制器上都包含了AD活动目录（Active Directory），活动目录的核心包含活动目录数据库，在活动目录数据库中包含了域中所以的对象（用户，计算机，组）</p>
+<p><img src="/2020/02/06/%E5%86%85%E7%BD%91%E5%AE%8F%E8%A7%82/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578291642042.png" alt="1578291642042"></p>
+<p><img src="/2020/02/06/%E5%86%85%E7%BD%91%E5%AE%8F%E8%A7%82/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578291792949.png" alt="1578291792949"></p>
+<h3 id="工作组和域的区别："><a href="#工作组和域的区别：" class="headerlink" title="工作组和域的区别："></a>工作组和域的区别：</h3><p>​       在工作组上你一切的设置，比如在本机上进行各种策略，用户登录都是登录在本机的，密码是放在本机的数据库来验证的。而如果你的计算机计入域的话，各种策略是域控制器统一设定，用户名和秘密码特殊放到域控制器去验证，也就是说，你的账号密码可以在统一域的任何一台计算机登录。</p>
+<p>​       工作组之间的机器可以任意访问 ，不存在信任关系，域之间的机器，不同域之间的机器存在信任关系，无法随意访问。</p>
+<p>​        工作组只要插上网线就是同一个工作组成员，加入域需要域控制器验证。</p>
+<p>密码储存：SAM文件</p>
+<p>system32/config</p>
+<h2 id="三、搭建环境"><a href="#三、搭建环境" class="headerlink" title="三、搭建环境"></a>三、搭建环境</h2><p><img src="/2020/02/06/%E5%86%85%E7%BD%91%E5%AE%8F%E8%A7%82/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578297353716.png" alt="1578297353716"></p>
+<p>搭建步骤</p>
+<p>1、添加角色Active Directiory</p>
+<p>2、设置静态ip</p>
+<p>3、客户机设置静态ip</p>
+<p>控制域，新建用户登录</p>
+<p>winserver域控制器 </p>
+<p>NetBIOS</p>
+<p><img src="/2020/02/06/%E5%86%85%E7%BD%91%E5%AE%8F%E8%A7%82/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578316787479.png" alt="1578316787479"></p>
+<p>krbtgt</p>
+<p>Domain Admins组的用户在域内拥有最高权限，可以在域内任意主机登录</p>
+<p>添加一个Domain Admins组的用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">net user test123 Test#123 &#x2F;add</span><br><span class="line"></span><br><span class="line">net group &quot;Domain Admins&quot; test123  &#x2F;add</span><br><span class="line"></span><br><span class="line">net user test123</span><br></pre></td></tr></table></figure>
+
+
+
+<p>软路由：routeos、openwrt、</p>
 
       
     </div>
@@ -389,8 +450,6 @@
           
             <a href="/tags/Tags%E5%88%9B%E5%BB%BA/" rel="tag"># Tags创建</a>
           
-            <a href="/tags/%E6%97%A5%E5%B8%B8%E8%B8%A9%E5%9D%91/" rel="tag"># 日常踩坑</a>
-          
         </div>
       
 
@@ -402,8 +461,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/01/16/linux%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" rel="next" title="linux内网信息收集">
-                <i class="fa fa-chevron-left"></i> linux内网信息收集
+              <a href="/2020/02/06/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A2%AB%E5%8A%AB%E6%8C%81%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" rel="next" title="浏览器被劫持解决方法">
+                <i class="fa fa-chevron-left"></i> 浏览器被劫持解决方法
               </a>
             
           </div>
@@ -411,10 +470,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/06/%E5%86%85%E7%BD%91%E5%AE%8F%E8%A7%82/" rel="prev" title="内网简介">
-                内网简介 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -550,7 +605,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#浏览器被劫持解决方法"><span class="nav-number">1.</span> <span class="nav-text">浏览器被劫持解决方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、内网渗透简介"><span class="nav-number">1.</span> <span class="nav-text">一、内网渗透简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、工作组和域"><span class="nav-number">2.</span> <span class="nav-text">二、工作组和域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工作组"><span class="nav-number">2.1.</span> <span class="nav-text">工作组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#域"><span class="nav-number">2.2.</span> <span class="nav-text">域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作组和域的区别："><span class="nav-number">2.3.</span> <span class="nav-text">工作组和域的区别：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、搭建环境"><span class="nav-number">3.</span> <span class="nav-text">三、搭建环境</span></a></li></ol></div>
             
 
           </div>
