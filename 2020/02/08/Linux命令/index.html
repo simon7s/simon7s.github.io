@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机基础," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Linux命令格式命令名 空格 参数  例：ls -al &#x2F;tmp 可以在命令后面加help查看详细用法 开机关机重启重启  123rebootinit 6shutdown -r now  关机 123456init 0haltshutdownpoweroffshutdown -h hours:minutes &amp; 按约定时间关闭系统shutdown -c 取消按预定时间关闭系系统  注销">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux终端常用命令">
+<meta property="og:url" content="http://yoursite.com/2020/02/08/Linux%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="South&#39;D 的博客">
+<meta property="og:description" content="Linux命令格式命令名 空格 参数  例：ls -al &#x2F;tmp 可以在命令后面加help查看详细用法 开机关机重启重启  123rebootinit 6shutdown -r now  关机 123456init 0haltshutdownpoweroffshutdown -h hours:minutes &amp; 按约定时间关闭系统shutdown -c 取消按预定时间关闭系系统  注销">
+<meta property="article:published_time" content="2020-02-07T17:11:34.803Z">
+<meta property="article:modified_time" content="2020-02-07T17:12:41.955Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="计算机基础">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/02/08/Linux命令/"/>
+
+
+
+
+
+  <title>Linux终端常用命令 | South'D 的博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">South'D 的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resources">
+          <a href="/resources%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-download"></i> <br />
+            
+            resources
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/08/Linux%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/hearder.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="South'D 的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux终端常用命令</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-08T01:11:34+08:00">
+                2020-02-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Linux命令"><a href="#Linux命令" class="headerlink" title="Linux命令"></a>Linux命令</h1><h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a><strong>格式</strong></h2><p>命令名 空格 参数 </p>
+<p>例：ls -al /tmp</p>
+<p>可以在命令后面加help查看详细用法</p>
+<h2 id="开机关机重启"><a href="#开机关机重启" class="headerlink" title="开机关机重启"></a>开机关机重启</h2><p>重启 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br><span class="line">init 6</span><br><span class="line">shutdown -r now</span><br></pre></td></tr></table></figure>
+
+<p>关机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">init 0</span><br><span class="line">halt</span><br><span class="line">shutdown</span><br><span class="line">poweroff</span><br><span class="line">shutdown -h hours:minutes &amp; 按约定时间关闭系统</span><br><span class="line">shutdown -c 取消按预定时间关闭系系统</span><br></pre></td></tr></table></figure>
+
+<p>注销</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logout</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><h3 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a>新建文件</h3><ul>
+<li><p>touch 新建文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch &#x2F;tmp&#x2F;newfile</span><br><span class="line">touch .&#x2F;newfile2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>mkdir 文件夹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir &#x2F;home&#x2F;ko&#x2F;hello</span><br><span class="line">mkdir .&#x2F;hello</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>相对路径、绝对路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pwd	查看当前路径</span><br><span class="line">&#x2F;	root根目录（绝对的根目录）</span><br><span class="line">.	上一层文件夹（相对路径）</span><br><span class="line">..	上两级文件夹（相对路径）</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><ul>
+<li><pre><code>rm -rf /*    删除文件
+rm -r * 删除文件夹
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 复制粘贴</span><br><span class="line"></span><br><span class="line">-</span><br></pre></td></tr></table></figure>
+cp xxx ./desktop/hello
+mv xxx ./desktop
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 查看</span><br><span class="line"></span><br><span class="line">-</span><br></pre></td></tr></table></figure>
+cat /hello/abc    查看全部
+more /hello/abc 从头开始显示一页
+head -n 15 /hello/abc 从头显示n行，默认10行
+tail -n 15 /hello/abc 从尾显示
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 查找</span><br><span class="line"></span><br><span class="line">-</span><br></pre></td></tr></table></figure>
+find -name “xxx”    //全局查找
+grep “xxx” 文件
+或
+cat /etc/passwd | grep xxx    
+    -v 可以反向查找
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### whereis 或 which</span><br><span class="line"></span><br><span class="line">- 查找命令的位置</span><br><span class="line">- 确定命令是否存在</span><br><span class="line"></span><br><span class="line">### 文本编辑Vim</span><br><span class="line"></span><br><span class="line">- 命令模式</span><br></pre></td></tr></table></figure>
+i    游标前插入
+
+o    另起一行插入
+
+2dd    删除两行
+
+s    向后删除
+
+u    撤销
+
+p    粘贴
+
+y    复制
+
+:    底线命令模式
+
+/word    搜索word，n 下一个结果，N 上一个结果
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 末行模式</span><br></pre></td></tr></table></figure>
+:set nu    设置行号
+
+:set ff=unix 或 :set fileformat=unix    设置文件格式
+
+:gg    跳转首行
+
+:GG    跳转尾行
+
+:7    7gg    7G 跳转到第7行
+
+:set nonu    删除行号
+
+:wq    保存并退出
+
+:w！    强行保存会覆盖文件，文件所有者可能会更改
+
+:q！    不保存直接退出
+
+:%s/word1/word2    替换成word2
+
+</code></pre></li>
+</ul>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 文件目录</span><br><span class="line"></span><br><span class="line">cd &#x2F;home 进入 &#39;&#x2F; home&#39; 目录&#39; </span><br><span class="line">cd .. 返回上一级目录 </span><br><span class="line">cd ..&#x2F;.. 返回上两级目录 </span><br><span class="line">cd 进入个人的主目录 </span><br><span class="line">cd ~user1 进入个人的主目录 </span><br><span class="line">cd - 返回上次所在的目录 </span><br><span class="line">pwd 显示工作路径 </span><br><span class="line">ls 查看目录中的文件 </span><br><span class="line">ls -F 查看目录中的文件 </span><br><span class="line">ls -l 显示文件和目录的详细资料 </span><br><span class="line">ls -a 显示隐藏文件 </span><br><span class="line">ls *[0-9]* 显示包含数字的文件名和目录名 </span><br><span class="line">tree 显示文件和目录由根目录开始的树形结构</span><br><span class="line">lstree 显示文件和目录由根目录开始的树形结构</span><br><span class="line">mkdir dir1 创建一个叫做 &#39;dir1&#39; 的目录&#39; </span><br><span class="line">mkdir dir1 dir2 同时创建两个目录 </span><br><span class="line">mkdir -p &#x2F;tmp&#x2F;dir1&#x2F;dir2 创建一个目录树 </span><br><span class="line">rm -f file1 删除一个叫做 &#39;file1&#39; 的文件&#39; </span><br><span class="line">rmdir dir1 删除一个叫做 &#39;dir1&#39; 的目录&#39; </span><br><span class="line">rm -rf dir1 删除一个叫做 &#39;dir1&#39; 的目录并同时删除其内容 </span><br><span class="line">rm -rf dir1 dir2 同时删除两个目录及它们的内容 </span><br><span class="line">mv dir1 new_dir 重命名&#x2F;移动 一个目录 </span><br><span class="line">cp file1 file2 复制一个文件 </span><br><span class="line">cp dir&#x2F;* . 复制一个目录下的所有文件到当前工作目录 </span><br><span class="line">cp -a &#x2F;tmp&#x2F;dir1 . 复制一个目录到当前工作目录 </span><br><span class="line">cp -a dir1 dir2 复制一个目录 </span><br><span class="line"></span><br><span class="line">cp -r dir1 dir2 复制一个目录及子目录</span><br><span class="line">ln -s file1 lnk1 创建一个指向文件或目录的软链接 </span><br><span class="line">ln file1 lnk1 创建一个指向文件或目录的物理链接 </span><br><span class="line">touch -t 0712250000 file1 修改一个文件或目录的时间戳 - (YYMMDDhhmm) </span><br><span class="line">file file1 outputs the mime type of the file as text </span><br><span class="line">iconv -l 列出已知的编码 </span><br><span class="line">iconv -f fromEncoding -t toEncoding inputFile &gt; outputFile creates a new from the given input file by assuming it is encoded in fromEncoding and converting it to toEncoding. </span><br><span class="line">find . -maxdepth 1 -name *.jpg -print -exec convert &quot;&#123;&#125;&quot; -resize 80x60 &quot;thumbs&#x2F;&#123;&#125;&quot; \; batch resize files in the current directory and send them to a thumbnails directory (requires convert from Imagemagick) </span><br><span class="line"></span><br><span class="line">### 自学</span><br><span class="line"></span><br><span class="line">awk</span><br><span class="line"></span><br><span class="line">- &lt;https:&#x2F;&#x2F;man.linuxde.net&#x2F;awk &gt;</span><br><span class="line"></span><br><span class="line">sed</span><br><span class="line"></span><br><span class="line">### 任务</span><br><span class="line"></span><br><span class="line">强杀进程 &#96;kill -9 id&#96;</span><br><span class="line"></span><br><span class="line">将任务退到后台，返回到终端（后台挂起） &#96;Ctrl +Z&#96;</span><br><span class="line"></span><br><span class="line">显示终端后台任务 &#96;jobs&#96;</span><br><span class="line"></span><br><span class="line">退出shell进程  &#96;exit &#96;或 &#96;Ctrl + D&#96;</span><br><span class="line"></span><br><span class="line">使第N个任务前台运行&#96;fg %N&#96;</span><br><span class="line"></span><br><span class="line">使第N个任务后台运行 &#96;bg %N&#96;	</span><br><span class="line"></span><br><span class="line">**任务如何持续运行** </span><br><span class="line"></span><br><span class="line">- 末尾加 &amp; 符号</span><br><span class="line"></span><br><span class="line">- nohup 命令 &amp; &lt;https:&#x2F;&#x2F;www.ibm.com&#x2F;developerworks&#x2F;cn&#x2F;linux&#x2F;l-cn-nohup&#x2F;index.html &gt;</span><br><span class="line"></span><br><span class="line">- setsid</span><br><span class="line"></span><br><span class="line">- service服务</span><br><span class="line"></span><br><span class="line">- screen&lt; https:&#x2F;&#x2F;www.ibm.com&#x2F;developerworks&#x2F;cn&#x2F;linux&#x2F;l-cn-screen&#x2F;index.html &gt;</span><br><span class="line"></span><br><span class="line">  键绑定（Ctrl-A），使用方法，先按绑定键，再按下一个键。</span><br></pre></td></tr></table></figure>
+<p>  screen -ls    查看<br>  screen -r id    恢复连接指定session会话<br>  Ctrl-A A    显示窗口<br>  Ctrl-A D    离开这个会话<br>  Ctrl-A K    关闭这个会话窗口<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 打包与压缩</span><br><span class="line"></span><br><span class="line">- 将文件全部打包成tar包，并gzip压缩：</span><br></pre></td></tr></table></figure><br>  tar -zcvf log.tar 内容1 内容2 …<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 查阅上述tar包内有哪些文件：</span><br></pre></td></tr></table></figure><br>  tar -ztvf log.tar.gz<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 带压缩的tar包</span><br></pre></td></tr></table></figure><br>  tar -zxvf /opt/soft/test/log.tar.gz<br>  tar -jxvf filename.tar.bz2 -C 欲解压缩的目录<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">#### 扩展</span><br></pre></td></tr></table></figure><br>bunzip2 file1.bz2 解压一个叫做 ‘file1.bz2’的文件<br>bzip2 file1 压缩一个叫做 ‘file1’ 的文件<br>gunzip file1.gz 解压一个叫做 ‘file1.gz’的文件<br>gzip file1 压缩一个叫做 ‘file1’的文件<br>gzip -9 file1 最大程度压缩<br>rar a file1.rar test_file 创建一个叫做 ‘file1.rar’ 的包<br>rar a file1.rar file1 file2 dir1 同时压缩 ‘file1’, ‘file2’ 以及目录 ‘dir1’<br>rar x file1.rar 解压rar包<br>unrar x file1.rar 解压rar包<br>tar -cvf archive.tar file1 创建一个非压缩的 tarball<br>tar -cvf archive.tar file1 file2 dir1 创建一个包含了 ‘file1’, ‘file2’ 以及 ‘dir1’的档案文件<br>tar -tf archive.tar 显示一个包中的内容<br>tar -xvf archive.tar 释放一个包<br>tar -xvf archive.tar -C /tmp 将压缩包释放到 /tmp目录下<br>tar -cvfj archive.tar.bz2 dir1 创建一个bzip2格式的压缩包<br>tar -jxvf archive.tar.bz2 解压一个bzip2格式的压缩包<br>tar -cvfz archive.tar.gz dir1 创建一个gzip格式的压缩包<br>tar -zxvf archive.tar.gz 解压一个gzip格式的压缩包<br>zip file1.zip file1 创建一个zip格式的压缩包<br>zip -r file1.zip file1 file2 dir1 将几个文件和目录同时压缩成一个zip格式的压缩包<br>unzip file1.zip 解压一个zip格式压缩包 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 某些快捷键</span><br><span class="line"></span><br><span class="line">- 清屏 Ctrl + L </span><br><span class="line">- 时间 date</span><br><span class="line"></span><br><span class="line">## **文件的权限 - 使用 &quot;+&quot; 设置权限，使用 &quot;-&quot; 用于取消**</span><br></pre></td></tr></table></figure>
+<p>ls -lh 显示权限<br>ls /tmp | pr -T5 -W$COLUMNS 将终端划分成5栏显示<br>chmod ugo+rwx directory1 设置目录的所有人(u)、群组(g)以及其他人(o)以读（r ）、写(w)和执行(x)的权限<br>chmod go-rwx directory1 删除群组(g)与其他人(o)对目录的读写执行权限<br>chown user1 file1 改变一个文件的所有人属性<br>chown -R user1 directory1 改变一个目录的所有人属性并同时改变改目录下所有文件的属性<br>chgrp group1 file1 改变文件的群组<br>chown user1:group1 file1 改变一个文件的所有人和群组属性<br>find / -perm -u+s 罗列一个系统中所有使用了SUID控制的文件<br>chmod u+s /bin/file1 设置一个二进制文件的 SUID 位 - 运行该文件的用户也被赋予和所有者同样的权限<br>chmod u-s /bin/file1 禁用一个二进制文件的 SUID位<br>chmod g+s /home/public 设置一个目录的SGID 位 - 类似SUID ，不过这是针对目录的<br>chmod g-s /home/public 禁用一个目录的 SGID 位<br>chmod o+t /home/public 设置一个文件的 STIKY 位 - 只允许合法所有人删除文件<br>chmod o-t /home/public 禁用一个目录的 STIKY 位 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## **APT 软件工具 (Debian, Ubuntu 以及类似系统)**</span><br></pre></td></tr></table></figure>
+<p>apt-get install package_name 安装/更新一个 deb 包<br>apt-cdrom install package_name 从光盘安装/更新一个 deb 包<br>apt-get update 升级列表中的软件包<br>apt-get upgrade 升级所有已安装的软件<br>apt-get remove package_name 从系统删除一个deb包<br>apt-get check 确认依赖的软件仓库正确<br>apt-get clean 从下载的软件包中清理缓存<br>apt-cache search searched-package 返回包含所要搜索字符串的软件包名称 </p>
+<pre><code></code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag"># 计算机基础</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/07/cmd%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="next" title="Windows CMD命令大全">
+                <i class="fa fa-chevron-left"></i> Windows CMD命令大全
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/hearder.jpg"
+                alt="John Doe" />
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/catagories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux命令"><span class="nav-number">1.</span> <span class="nav-text">Linux命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#格式"><span class="nav-number">1.1.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开机关机重启"><span class="nav-number">1.2.</span> <span class="nav-text">开机关机重启</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件管理"><span class="nav-number">1.3.</span> <span class="nav-text">文件管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新建文件"><span class="nav-number">1.3.1.</span> <span class="nav-text">新建文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除"><span class="nav-number">1.3.2.</span> <span class="nav-text">删除</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
