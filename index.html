@@ -258,6 +258,261 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/08/%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/hearder.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="South'D 的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/08/%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%B3%BB%E7%BB%9F/" itemprop="url">Linux文件权限</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-08T01:27:16+08:00">
+                2020-02-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Linux文件权限系统"><a href="#Linux文件权限系统" class="headerlink" title="Linux文件权限系统"></a>Linux文件权限系统</h1><h2 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h2><h3 id="扩展名"><a href="#扩展名" class="headerlink" title="扩展名"></a>扩展名</h3><p>*.sh 脚本或批处理文件（script），shell写成的，故简写sh</p>
+<p>Z, .tar, .tar.gz, .zip, *.tgz 压缩包</p>
+<h2 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h2><h3 id="启用root用户-用户切换"><a href="#启用root用户-用户切换" class="headerlink" title="启用root用户/用户切换"></a>启用root用户/用户切换</h3><ol>
+<li>sudo passwd root</li>
+<li>su root</li>
+<li>exit 退出管理员模式</li>
+</ol>
+<h3 id="对文件"><a href="#对文件" class="headerlink" title="对文件"></a>对文件</h3><ul>
+<li>r （read）：可读取此一文件的实际内容，如读取文本文件的文字内容等；</li>
+<li>w （write）：可以编辑、新增或者是修改该文件的内容（但<u>不含删除该文件</u>）；</li>
+<li>x （eXecute）：该文件具有可以被系统执行的权限。</li>
+</ul>
+<h3 id="对目录"><a href="#对目录" class="headerlink" title="对目录"></a>对目录</h3><ul>
+<li><p>r （read contents in directory） </p>
+<p>查询该目录下的文件名数据，即<code>ls</code>。r 代表房间”灯光”，若你已知里面的位置（名字），一样可以找到文件。</p>
+</li>
+<li><p>w （modify contents of directory）</p>
+<p>创建新的文件与目录；<br><u>删除已经存在的文件与目录（不论该文件的权限为何！）</u><br>将已存在的文件或目录进行更名；<br>搬移该目录内的文件、目录位置。 总之，目录的w权限就与该目录下面的文件名异动有关就对了啦！</p>
+</li>
+<li><p>x （access directory） </p>
+<p>设为 工作目录（work directory），即<code>cd</code></p>
+<p><u>读一个文件时，你得要具有“这个文件所在目录的 x 权限”</u> </p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>元件</th>
+<th>内容</th>
+<th>叠代物件</th>
+<th>r</th>
+<th>w</th>
+<th>x</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>文件</td>
+<td>详细数据data</td>
+<td>文件数据夹</td>
+<td>读到文件内容</td>
+<td>修改文件内容</td>
+<td>执行文件内容</td>
+</tr>
+<tr>
+<td>目录</td>
+<td>文件名</td>
+<td>可分类抽屉</td>
+<td>读到文件名</td>
+<td>修改文件名</td>
+<td>进入该目录的权限（key）</td>
+</tr>
+</tbody></table>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h4 id="查看权限"><a href="#查看权限" class="headerlink" title="查看权限"></a>查看权限</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls -[a]l a.txt	文件</span><br><span class="line">ls -ld mydir	文件夹 d表示dir</span><br><span class="line">-a	显示.开头的隐藏文件</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    -rw-r--r--.  1    root     root    1864  May  4 18:01 abc.txt  </span><br><span class="line">  [0][   1    ][  2 ][   3  ][  4 ][    5   ][    6     ] [  7   ]</span><br><span class="line">[类型][ 权限  ] [链接][拥有者][群组] [文件大小] [ 修改日期 ]  [文件名]</span><br></pre></td></tr></table></figure>
+
+<p>文件类型</p>
+<table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-</td>
+<td>file文件，纯文本ASCII、二进制档binary、数据格式文件data</td>
+</tr>
+<tr>
+<td align="center">l</td>
+<td>sym link链接</td>
+</tr>
+<tr>
+<td align="center">d</td>
+<td>directory目录</td>
+</tr>
+<tr>
+<td align="center">b</td>
+<td>block区块设备文件</td>
+</tr>
+<tr>
+<td align="center">c</td>
+<td>character字符设备文件</td>
+</tr>
+<tr>
+<td align="center">s</td>
+<td>sockets数据接口文件</td>
+</tr>
+<tr>
+<td align="center">p</td>
+<td>FIFO，pipe</td>
+</tr>
+</tbody></table>
+<p>权限位</p>
+<ul>
+<li>rw- rw- r–    分别为owner、group、world的读写操作权限</li>
+</ul>
+<p>用户所属与组所属</p>
+<ul>
+<li>文件夹若没有x权限，则不能进入。</li>
+</ul>
+<h3 id="改变分组-chgrp"><a href="#改变分组-chgrp" class="headerlink" title="改变分组, chgrp"></a>改变分组, chgrp</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chgrp [-R] dirname&#x2F;filename</span><br><span class="line">	-R 表示递归，同次目录下的所有文件、目录都更新</span><br></pre></td></tr></table></figure>
+
+<h3 id="改变文件持有者，chown"><a href="#改变文件持有者，chown" class="headerlink" title="改变文件持有者，chown"></a>改变文件持有者，chown</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chown [-R] 帐号名称 文件或目录</span><br><span class="line">chown [-R] 帐号名称:群组名称 文件或目录</span><br></pre></td></tr></table></figure>
+
+<h3 id="改变权限-chmod"><a href="#改变权限-chmod" class="headerlink" title="改变权限, chmod"></a>改变权限, chmod</h3><ul>
+<li><p>数字类型改变文件权限 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod [-R] xyz 文件或目录</span><br><span class="line">xyz : 就是刚刚提到的数字类型的权限属性，为 rwx 属性数值的相加。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>符号类型改变文件权限 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">| chmod | u g o a | +（加入）-（除去） &#x3D;（设置） | r w x | 文件或目录 |</span><br><span class="line">例：</span><br><span class="line">[root@study ~]# chmod  u&#x3D;rwx,go&#x3D;rx  abc.txt</span><br><span class="line">[root@study ~]# ls -al abc.txt</span><br><span class="line">-rwxr-xr-x. 1 root root 176 Dec 29  2013 abc.txt</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/08/linux%E6%9B%B4%E6%96%B0&%E6%8D%A2%E6%BA%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2756,163 +3011,13 @@ cmd &gt;| file
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/12/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/hearder.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="South'D 的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/12/hello-world/" itemprop="url">我的helloworld</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T15:55:40+08:00">
-                2020-01-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ios/" itemprop="url" rel="index">
-                    <span itemprop="name">ios</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+  </nav>
+
 
 
           </div>
@@ -2960,7 +3065,7 @@ cmd &gt;| file
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
